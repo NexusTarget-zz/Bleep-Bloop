@@ -16,9 +16,27 @@ Roles:
 </ul>
 
 Tasks:
-- [x] <strong>Week 1 - Planning AVC: </strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)
-- [ ] <strong>Week 2 - Straight Line Movement AVC:</strong> Test Robot Built (Krishna), Code for straight line movement & Gate Stop (Nick, Finn & Jack), A rough parts list for final robot (Antonio & Krishna)
-- [ ] <strong>Week 3 - Quadrent One Completion AVC:</strong> Gate Opening Code (Jack), Camera Code (Finn & Nick), Rough CAD design (Cicero), finalised Parts List (Antonio & Krishna)
+- [x] <strong>Week 1 - Planning AVC: </strong> 
+  <ul>
+    <li>Github Repo (Jack)</li>
+    <li>Plan Complete (Finn & Antonio)</li>
+    <li>SSH into Rpi (Jack & Nick)</li> 
+    <li>CAD Testing (Cicero)</li>
+    <li>Building Demo Chassis (Krishna)</li>
+  </ul>
+- [ ] <strong>Week 2 - Straight Line Movement AVC:</strong>
+  <ul>
+    <li>Test Robot Built (Krishna)</li> 
+    <li>Code for straight line movement & Gate Stop (Nick, Finn & Jack)</li>
+    <li>A rough parts list for final robot (Antonio & Krishna)</li>
+  </ul>
+- [ ] <strong>Week 3 - Quadrent One Completion AVC:</strong>
+  <ul>
+    <li>Gate Opening Code (Jack)</li> 
+    <li>Camera Code (Finn & Nick)</li> 
+    <li>Rough CAD design (Cicero)</li> 
+    <li>finalised Parts List (Antonio & Krishna)</li> 
+  </ul>
 
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
 ^ link to weekly schedule and objectives
