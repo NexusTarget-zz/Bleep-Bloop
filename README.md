@@ -16,9 +16,9 @@ Roles:
 </ul>
 
 Tasks:
-- [x] <strong>Week 1:</strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)
-- [ ] <strong>Week 2:</strong> Test Robot Built (Krishna), Code for straight line movement & Gate Stop (Nick, Finn & Jack), A rough parts list for final robot (Antonio & Krishna)
-- [ ] <strong>Week 3:</strong> Gate Opening Code (Jack), Camera Code (Finn & Nick), Rough CAD design (Cicero), finalised Parts List (Antonio & Krishna)
+- [x] <strong>Week 1 - Planning AVC: </strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)
+- [ ] <strong>Week 2 - Straight Line Movement AVC:</strong> Test Robot Built (Krishna), Code for straight line movement & Gate Stop (Nick, Finn & Jack), A rough parts list for final robot (Antonio & Krishna)
+- [ ] <strong>Week 3 Quadrent One Completion AVC:</strong> Gate Opening Code (Jack), Camera Code (Finn & Nick), Rough CAD design (Cicero), finalised Parts List (Antonio & Krishna)
 
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
 ^ link to weekly schedule and objectives
