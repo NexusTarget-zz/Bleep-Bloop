@@ -14,8 +14,8 @@
   <li>Nick: Software (writing core code and extending functionality, debugging software and committing to git)</li>
 </ul>
 
-<form>Tasks:
-  <input type="checkbox" name="Week 1" value="Week 1"><strong>Week 1:</strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)<br>
+<ol>Tasks:
+  <li><input type="checkbox" name="Week 1" value="Week 1"><strong>Week 1:</strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)</li><br>
 </form>
 
 
