@@ -38,5 +38,14 @@ Tasks:
     <li>finalised Parts List (Antonio & Krishna)</li> 
   </ul>
 
+<strong> Week 1 - Review: </strong>
+<br>
+Hardware
+<ul> 
+  <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself</li>
+  <li>Learned the basic's of CAD</li>
+  <li>Started the parts list</li>
+</ul>
+
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
 ^ link to weekly schedule and objectives
