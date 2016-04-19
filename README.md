@@ -2,12 +2,9 @@
 
 √-1 2^3 ∑ π
 
-AVC Plan
-
+<strong>AVC Plan</strong>
 <strong>Team Name:</strong> Bleep Bloop
-
 <strong>Team Members: </strong>Finn Welsford-Ackroyd, Jack Moran, Krishna Kapadia, Cicero Caramto, Nick Lauder, Antonio Cacciamani
-
 <ul>Roles: 
   <li>Jack: Software (writing core code and extending functionality, debugging software and committing to git)</li>
   <li>Krishna: Hardware Application (building the chassis, testing components, connecting sensors, debugging hardware, committing to git)</li>
@@ -16,5 +13,9 @@ AVC Plan
   <li>Cicero: Hardware Design and Hardware Application Helper (CAD)</li>
   <li>Nick: Software (writing core code and extending functionality, debugging software and committing to git)</li>
 </ul>
+
+<ol>Tasks:
+  <li><strong>Week 1:</strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)</li>
+</ol>
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
 ^ link to weekly schedule and objectives
