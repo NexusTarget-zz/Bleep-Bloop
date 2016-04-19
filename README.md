@@ -14,10 +14,8 @@
   <li>Nick: Software (writing core code and extending functionality, debugging software and committing to git)</li>
 </ul>
 
-<ol>Tasks:
-  <li><input type="checkbox" name="Week 1" value="Week 1 checked="checked""><strong>Week 1:</strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)</li><br>
-</form>
-
+Tasks:
+- [x] <strong>Week 1:</strong> Github Repo (Jack), Plan Complete (Finn & Antonio), SSH into Rpi (Jack & Nick), CAD Testing (Cicero), Building Demo Chassis (Krishna)
 
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
 ^ link to weekly schedule and objectives
