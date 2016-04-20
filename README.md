@@ -41,18 +41,19 @@ Tasks:
 <strong> Week 1 - Review: </strong>
 <br>
 Software
-<ul> 
+<ul>
+  <li>Finished testMotor code</li>
   <li>Finished networking code</li>
-  <li> Tested opening gate succesfully</li>
+  <li>Tested motors successfully</li>
+  <li>Tested opening gate successfully</li>
 </ul>
-
 Hardware
 <ul> 
-  <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself</li>
+  <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself, added a battery and changed the back wheel to a ball as the wheel provided difficulties with manoeuvrability</li>
   <li>Learned the basic's of CAD</li>
   <li>Started the parts list</li>
   <li>Finished networking code</li>
-  <li> Tested opening gate succesfully</li>
+  <li>Tested opening gate successfully</li>
 </ul>
 
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
