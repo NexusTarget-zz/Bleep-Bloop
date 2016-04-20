@@ -40,6 +40,12 @@ Tasks:
 
 <strong> Week 1 - Review: </strong>
 <br>
+Software
+<ul> 
+  <li>Finished networking code</li>
+  <li> Tested opening gate succesfully</li>
+</ul>
+
 Hardware
 <ul> 
   <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself</li>
