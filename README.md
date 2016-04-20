@@ -45,6 +45,8 @@ Hardware
   <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself</li>
   <li>Learned the basic's of CAD</li>
   <li>Started the parts list</li>
+  <li>Finished networking code</li>
+  <li> Tested opening gate succesfully</li>
 </ul>
 
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
