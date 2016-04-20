@@ -10,7 +10,7 @@ int main (){
    // This sets up the RPi hardware and ensures
    // everything is working correctly
    init(0);
-   connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
+   connect_to_server("###.###.###.###", ####); //connects to server with the ip address and port
    send_to_server("Please"); //sends please to the connected server
    char message[24];
    receive_from_server(message); //receives message from the connected server
