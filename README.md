@@ -42,18 +42,19 @@ Tasks:
 <br>
 Software
 <ul>
-  <li>Finished testMotor code</li>
-  <li>Finished networking code</li>
-  <li>Tested motors successfully</li>
-  <li>Tested opening gate successfully</li>
+  <li>Finished testMotor code (Nick)</li>
+  <li>Finished networking code (Jack)</li>
+  <li>Commenced line following code (Jack)</li>
+  <li>Tested motors successfully (Nick)</li>
+  <li>Tested opening gate successfully (Jack)</li>
+  <li>Testing line following code (Jack)</li>
 </ul>
 Hardware
 <ul> 
-  <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself, added a battery and changed the back wheel to a ball as the wheel provided difficulties with manoeuvrability</li>
+  <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself, added a battery and changed the back wheel to a ball as the wheel provided difficulties with manoeuvrability (Krishna)</li>
+  <li>Changed large wheels to small wheels (Keishna)</li>
   <li>Learned the basic's of CAD</li>
   <li>Started the parts list</li>
-  <li>Finished networking code</li>
-  <li>Tested opening gate successfully</li>
 </ul>
 
 https://docs.google.com/document/d/10r3HiMuzzq4wjiJeLCtejBaO2R9fqQX-Cg4wlI17G9I/edit?usp=sharing
