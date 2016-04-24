@@ -52,7 +52,7 @@ Software
 Hardware
 <ul> 
   <li>We got the demo chassis built,connected the motors and mounted the raspberry pi itself, added a battery and changed the back wheel to a ball as the wheel provided difficulties with manoeuvrability (Krishna)</li>
-  <li>Changed large wheels to small wheels (Keishna)</li>
+  <li>Changed large wheels to small wheels (Krishna)</li>
   <li>Learned the basic's of CAD</li>
   <li>Started the parts list</li>
 </ul>
