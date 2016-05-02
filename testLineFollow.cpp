@@ -1,11 +1,14 @@
 #include <stdio.h>
 #include <time.h>
 
+extern "C" int set_motor(int motor, int speed);
 extern "C" int init(int d_lev);
 extern "C" int take_picture();
 extern "C" char get_pixel(int row,int col,int colour);
 extern "C" int Sleep(int sec, int usec);
 extern "C" int update_screen();
+extern "C" int open_screen_stream();
+extern "C" int close_screen_stream();
 
 int main(){
 	init(0);
@@ -21,9 +24,9 @@ int main(){
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
 
 	while(true){ //This creates a never ending loop
-		int pTot = 0;
-		float max = 0;
-		float errorValue = 0;
+		pTot = 0;
+		max = 0;
+		errorValue = 0;
 
 		take_picture(); //Self explainitory
 
@@ -41,15 +44,18 @@ int main(){
 		}
 
 		errorValue = errorValue/32; //Gets average of error
+		printf("%s\n", errorValue);
 
 		left = 40 + errorValue * 4.0;
 		right = 40 - errorValue * 4.0;
 
 		set_motor(1, left);
 		set_motor(2, right);
+		printf("%s\n", left, right);
 
 		update_screen();
 	}
 
 	close_screen_stream();
 }
+
