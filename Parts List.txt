@@ -1,0 +1,17 @@
+Parts List Revision 1:
+
+- Motors x2, Base motors, do not require an upgrade unless looking for speed however accuracy is the main point of focus
+  at this time
+
+- Battery Pack,6.6V, minimum of 5V required for basic operation of the pi therefore 6.6V is plenty 
+  by taking to account the voltage required by the other components, Weight in 91 grams.
+  
+- Roller Wheel, minimises issues in turning, doesnt get caught on itself.
+
+- Small wheels, small motor rotations shouldn't affect the overall tracking system as it would with larger wheels.
+  Smaller wheels = more rotations complete a 360 degree turn, this means that the smaller wheels atribute to a more percise turn.
+  
+- Raspberry Pi with the custom Shield 
+
+- Camera, Base camera works well, will not need to be upgraded unless software is having major issues reading the color
+  seperation between the white line and the black background.
