@@ -20,6 +20,7 @@ int main(void){
 	float errorValue; //Error value that sets the distance between line and centre
 	int left; 
 	int right;
+	int kp = 4.0; //P value in PD controller
 
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
 
@@ -28,7 +29,7 @@ int main(void){
 		errorValue = 0;
 		avg = 0;
 
-		take_picture(); //Self explainitory
+		take_picture(); //Self explanatory
 
 		for (int i = 0; i < sizeof(pLine); i++){ //Finds brightness of each required pixel
 			pLine[i] = get_pixel(i*10,56,3);
@@ -37,7 +38,7 @@ int main(void){
 
 		avg = (float)pTot/sizeof(pLine); //Gets average of pixel
 
-		for (int i = 0; i < sizeof(pLine); i++){ //If pixel is brighter then average, negative number means line is to the left, positive if line is to the right
+		for (int i = 0; i < sizeof(pLine); i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 			if (pLine[i]>avg){
 				errorValue += 10(i-sizeof(pLine)/2);
 			}
@@ -46,8 +47,8 @@ int main(void){
 		errorValue = errorValue/sizeof(pLine); //Gets average of error
 		printf("%s\n", errorValue);
 		// Determines the new motor speeds to alter direction
-		left = 40 + errorValue * 4.0;
-		right = 40 - errorValue * 4.0;
+		left = 40 + errorValue * kp;
+		right = 40 - errorValue * kp;
 		// Changes the motor speeds to the predetermined values
 		set_motor(1, left);
 		set_motor(2, right);
