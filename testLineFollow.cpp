@@ -15,8 +15,8 @@ int main(){
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 	int pLine[32]; //Creates an array to store pixel values
-	int pTot; //Totel pixel value
-	float max; //The value a pixel must be greater
+	int pTot; //Total pixel value
+	float avg = 0; //The average brightness of pixels
 	float errorValue; //Error value that sets the distance between line and centre
 	int left; 
 	int right;
@@ -25,30 +25,29 @@ int main(){
 
 	while(true){ //This creates a never ending loop
 		pTot = 0;
-		max = 0;
 		errorValue = 0;
 
 		take_picture(); //Self explainitory
 
-		for (int i = 0; i < 32; i++){ //Loads total brightness
+		for (int i = 0; i < sizeof(pLine); i++){ //Finds brightness of each required pixel
 			pLine[i] = get_pixel(i*10,56,3);
 			pTot += pLine[i];
 		}
 
-		max = (float)pTot/32.0; //Gets average of pixel
+		avg = (float)pTot/sizeof(pLine); //Gets average of pixel
 
-		for (int i = 0; i < 32; i++){ //If pixel is brighter then average
-			if (pLine[i]>max){
-				errorValue += 10(i-16);
+		for (int i = 0; i < sizeof(pLine); i++){ //If pixel is brighter then average, negative number means line is to the left, positive if line is to the right
+			if (pLine[i]>avg){
+				errorValue += 10(i-sizeof(pLine)/2);
 			}
 		}
 
-		errorValue = errorValue/32; //Gets average of error
+		errorValue = errorValue/sizeof(pLine); //Gets average of error
 		printf("%s\n", errorValue);
-
+		// Determines the new motor speeds to alter direction
 		left = 40 + errorValue * 4.0;
 		right = 40 - errorValue * 4.0;
-
+		// Changes the motor speeds to the predetermined values
 		set_motor(1, left);
 		set_motor(2, right);
 		printf("%s\n", left, right);
