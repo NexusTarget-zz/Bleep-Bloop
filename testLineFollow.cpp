@@ -10,7 +10,7 @@ extern "C" int update_screen();
 extern "C" int open_screen_stream();
 extern "C" int close_screen_stream();
 
-int main(){
+int main(void){
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
@@ -57,5 +57,6 @@ int main(){
 	}
 
 	close_screen_stream();
+return 0;
 }
 
