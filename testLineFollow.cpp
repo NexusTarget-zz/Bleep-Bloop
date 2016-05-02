@@ -16,7 +16,7 @@ int main(){
 	// everything is working correctly
 	int pLine[32]; //Creates an array to store pixel values
 	int pTot; //Total pixel value
-	float avg = 0; //The average brightness of pixels
+	float avg; //The average brightness of pixels
 	float errorValue; //Error value that sets the distance between line and centre
 	int left; 
 	int right;
@@ -26,6 +26,7 @@ int main(){
 	while(true){ //This creates a never ending loop
 		pTot = 0;
 		errorValue = 0;
+		avg = 0;
 
 		take_picture(); //Self explainitory
 
