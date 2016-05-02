@@ -11,7 +11,7 @@ int main(){
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
-	int pLine[40] //Creates an array to store pixel values
+	int pLine[32]; //Creates an array to store pixel values
 	int pTot; //Totel pixel value
 	float max; //The value a pixel must be greater
 	float errorValue; //Error value that sets the distance between line and centre
@@ -53,4 +53,3 @@ int main(){
 
 	close_screen_stream();
 }
-
