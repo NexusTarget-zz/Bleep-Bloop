@@ -19,4 +19,3 @@ int main (){
    printf("%s/n", "Message was sent to the server");
    return 0;
 }
-
