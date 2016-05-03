@@ -10,7 +10,7 @@ extern "C" int update_screen();
 extern "C" int open_screen_stream();
 extern "C" int close_screen_stream();
 
-int main(void){
+int main(){
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
@@ -45,19 +45,18 @@ int main(void){
 		}
 
 		errorValue = errorValue/sizeof(pLine); //Gets average of error
-		printf("%s\n", errorValue); //printf should be %d?
+		printf("%f\n", errorValue); //printf should be %d?
 		// Determines the new motor speeds to alter direction
 		left = 40 + errorValue * kp;
 		right = 40 - errorValue * kp;
 		// Changes the motor speeds to the predetermined values
 		set_motor(1, left);
 		set_motor(2, right);
-		printf("%s\n", left, right);
+		printf("%d, %d\n", left, right);
 
 		update_screen();
 	}
 
 	close_screen_stream();
-	return 0;
 }
 
