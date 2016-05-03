@@ -24,7 +24,7 @@ Tasks:
     <li>CAD Testing (Cicero)</li>
     <li>Building Demo Chassis (Krishna)</li>
   </ul>
-- [ ] <strong>Week 2 - Straight Line Movement AVC:</strong>
+- [x] <strong>Week 2 - Straight Line Movement AVC:</strong>
   <ul>
     <li>Test Robot Built (Krishna)</li> 
     <li>Code for straight line movement & Gate Stop (Nick, Finn & Jack)</li>
