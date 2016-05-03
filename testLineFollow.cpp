@@ -20,7 +20,7 @@ int main(void){
 	float errorValue; //Error value that sets the distance between line and centre
 	int left; 
 	int right;
-	int kp = 4.0; //P value in PD controller
+	double kp = 4.0; //P value in PD controller
 
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
 
@@ -40,12 +40,12 @@ int main(void){
 
 		for (int i = 0; i < sizeof(pLine); i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 			if (pLine[i]>avg){
-				errorValue += 10(i-sizeof(pLine)/2);
+				errorValue += 10*(i-sizeof(pLine)/2);
 			}
 		}
 
 		errorValue = errorValue/sizeof(pLine); //Gets average of error
-		printf("%s\n", errorValue);
+		printf("%s\n", errorValue); //printf should be %d?
 		// Determines the new motor speeds to alter direction
 		left = 40 + errorValue * kp;
 		right = 40 - errorValue * kp;
@@ -58,6 +58,6 @@ int main(void){
 	}
 
 	close_screen_stream();
-return 0;
+	return 0;
 }
 
