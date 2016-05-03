@@ -45,7 +45,7 @@ int main(){
 		}
 
 		errorValue = errorValue/sizeof(pLine); //Gets average of error
-		printf("%f\n", errorValue); //printf should be %d?
+		printf("%f\n", errorValue); //%f because errorValue is a float
 		// Determines the new motor speeds to alter direction
 		left = 40 + errorValue * kp;
 		right = 40 - errorValue * kp;
