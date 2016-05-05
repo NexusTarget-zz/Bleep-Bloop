@@ -1,0 +1,11 @@
+3/5/16
+
+This week was a very productive week, the software is moving forward very fast, jack and nick have implemented the code for
+the  camera to follow the line and open the gate, but we haven't yet got the code working for when the tape diverges.
+We have implemented PD controller in our code to help with tracking. Finn is now helping Jack and Nick with finding the code
+for better error checking and improving the PD design. 
+
+As for the hardware and design, Krishna had an in depth parts list for what we need until 80%.
+Cicero has been ticking away at learning the CAD software and is now in the initial planning phase of the final build.
+They are now working on measuring the 80% part of the maze, and thinking about necessary hardware to complete it.
+This is useful for the final design because size of the bot affects turning radius and ability to traverse the maze.
