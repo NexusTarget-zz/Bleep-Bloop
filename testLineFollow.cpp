@@ -15,12 +15,19 @@ int main(){
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 	int pLine[32]; //Creates an array to store pixel values
+	int sampleSize = sizeof(pLine); //A set variable of the arrays length
 	int pTot; //Total pixel value
 	float avg; //The average brightness of pixels
 	float errorValue; //Error value that sets the distance between line and centre
+	float prevErrorValue = 0; //Previous value of error used to calculate the dErrorValue
+	float dErrorValue; //Error value used by the derivative value kd
 	int left; 
 	int right;
 	double kp = 4.0; //P value in PD controller
+	double kd = 4.0; //D value in PD controller
+	double timeStep = 1.0; //The time period used for calculating kp
+	time_t start_t; //The start point for calculating a time difference
+	time_t end_t = 0; //End point for calculating time difference
 
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
 
@@ -31,24 +38,34 @@ int main(){
 
 		take_picture(); //Self explanatory
 
-		for (int i = 0; i < sizeof(pLine); i++){ //Finds brightness of each required pixel
-			pLine[i] = get_pixel(i*10,56,3);
+		for (int i = 0; i < sampleSize; i++){ //Finds brightness of each required pixel
+			pLine[i] = get_pixel(i*10,120,3);
 			pTot += pLine[i];
 		}
 
-		avg = (float)pTot/sizeof(pLine); //Gets average of pixel
+		avg = (float)pTot/sampleSize; //Gets average brightness of pixels
 
-		for (int i = 0; i < sizeof(pLine); i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
+		for (int i = 0; i < sampleSize; i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 			if (pLine[i]>avg){
-				errorValue += 10*(i-sizeof(pLine)/2);
+				errorValue += 10*(i-sampleSize/2);
 			}
 		}
+		time(&start_t); //Finds the current time
+		if (difftime(end_t, start_t) > timeStep) //Runs if the time period is larger than the timestep
+		{
+			
+			end_t = start_t;
+			//Formulas used to calculate the dErrorValue
+			double errorDiff = errorValue - prevErrorValue;
+			dErrorValue = (float)errorDiff/timeStep;
+			prevErrorValue = errorValue;
+		}
 
-		errorValue = errorValue/sizeof(pLine); //Gets average of error
+		errorValue = errorValue/sampleSize; //Gets average of error
 		printf("%f\n", errorValue); //%f because errorValue is a float
 		// Determines the new motor speeds to alter direction
-		left = 40 + errorValue * kp;
-		right = 40 - errorValue * kp;
+		left = 40 + errorValue * kp + dErrorValue *kd;
+		right = 40 - errorValue * kp - dErrorValue *kd;
 		// Changes the motor speeds to the predetermined values
 		set_motor(1, left);
 		set_motor(2, right);
@@ -58,5 +75,6 @@ int main(){
 	}
 
 	close_screen_stream();
+	return 0;
 }
 
