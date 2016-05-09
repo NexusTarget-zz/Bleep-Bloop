@@ -9,3 +9,17 @@ As for the hardware and design, Krishna had an in depth parts list for what we n
 Cicero has been ticking away at learning the CAD software and is now in the initial planning phase of the final build.
 They are now working on measuring the 80% part of the maze, and thinking about necessary hardware to complete it.
 This is useful for the final design because size of the bot affects turning radius and ability to traverse the maze.
+
+10/5/16
+
+We had some issues with the coding on the Pi this past week; due to network issues, we struggled to SSH into the pi, this 
+meant that the coding of the Pi itself went a lot slower this week than last week. Currently the code team is still working 
+on the PID controller. Next week they will move on to prioritising what happens when there is a junction or right angle corner 
+on the line, or when the line is lost altogether.
+
+The design team however have made some great progress; the finalised parts list is now up and includes the parts we will need 
+to get to 100%. The base of the bot (rev.1) has been designed in CAD. In the coming week they will be attaching motors and 
+sensors and refining the design of the base.
+
+The reporting team has done brief notes on what is needed in the progress report, so to help the other team members with their 
+write up.
