@@ -2,7 +2,7 @@
 
 This week was a very productive week, the software is moving forward very fast, jack and nick have implemented the code for
 the  camera to follow the line and open the gate, but we haven't yet got the code working for when the tape diverges.
-We have implemented PD controller in our code to help with tracking. Finn is now helping Jack and Nick with finding the code
+We have implemented a rudimentary PD controller in our code to help with tracking. Finn is now helping Jack and Nick with finding the code
 for better error checking and improving the PD design. 
 
 As for the hardware and design, Krishna had an in depth parts list for what we need until 80%.
