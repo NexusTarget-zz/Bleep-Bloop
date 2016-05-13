@@ -19,12 +19,14 @@ int main(){
 	int pTot; //Total pixel value
 	float avg; //The average brightness of pixels
 	float errorValue; //Error value that sets the distance between line and centre
+	float totalErrorValue = 0;
 	float prevErrorValue = 0; //Previous value of error used to calculate the dErrorValue
 	float dErrorValue; //Error value used by the derivative value kd
 	int left; 
 	int right;
 	double kp = 0.2; //P value in PD controller
 	double kd = 4.0; //D value in PD controller
+	double ki = 4.0; //I value in PD controller
 	double timeStep = 0.2; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
@@ -69,6 +71,8 @@ int main(){
 		}
 //*******************************END OF EXPERIMENTAL******************************
 		
+		totalErrorValue += errorValue; //calculating the intergral error value
+		
 		time(&start_t); //Finds the current time
 		if (difftime(end_t, start_t) > timeStep) //Runs if the time period is larger than the timestep
 		{
@@ -83,8 +87,8 @@ int main(){
 
 		printf("%f\n", errorValue); //%f because errorValue is a float
 		// Determines the new motor speeds to alter direction
-		left = 40 + errorValue * kp + dErrorValue *kd;
-		right = 40 - errorValue * kp - dErrorValue *kd;
+		left = 40 + (errorValue * kp) + (dErrorValue *kd) + (totalErrorValue * ki);
+		right = 40 - (errorValue * kp) - (dErrorValue *kd) - (totalErrorValue * ki);
 		// Changes the motor speeds to the predetermined values
 		set_motor(1, left);
 		set_motor(2, right);
