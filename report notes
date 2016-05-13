@@ -1,0 +1,86 @@
+Notes from meeting:
+Hardware:
+Motors: easier than tracks
+Pingpong wheel: better cornering and efficiency, no added friction if a pivot wheel would get caught
+Small wheels: more control and precise movement, meaning better overall positional tracking.
+Long range ir sensors: short range sensors had too short a focal length, if we were to implement these we may have positional tracking issues through the maze.
+Pie, shield and camera: supplied
+
+Currently unable to pass comment on the cad design as it is still in its early stages.
+
+Software:
+Network:
+We connect to the server with the given ip address.
+Send the message “please” to the server.
+Receive the password from the server.
+Repeat the message back to the server.
+Drive through the gate.
+
+
+
+Motor control and tracking:
+We have an array that stores the value of the measurement of 1/10 pixels on our 320x240 resolution camera.
+Then we find the average value across all the measurements in the array, if a pixel is significantly brighter than the average, 
+it is safe to assume it is the line (interpreted as white by our AV).
+For each white pixel found we create an error value based on how far that pixel is from the center of the camera; this is our p error
+value.
+
+We used the  current system time function to set the the start time, for the sake of code testing we set out timestep to 1, this needs 
+to be made a great deal smaller once our code is fully implemented.
+
+The error difference value is the current p error value - the previous p error value. If you take that number and divide it by the time 
+step it gives the D error value.
+
+The left and right motor speeds are then calculated by  having a constant speed ± (the p error value * our Kp constant) ± (the d error 
+value * our Kd constant). (left +, right -)
+
+Abstract:
+
+intro:
+Scope: 
+ Project scope is the part of project planning that involves determining and documenting a list of specific project goals, deliverables,
+ features, functions, tasks, deadlines, and ultimately costs. In other words, it is what needs to be achieved and the work that must be 
+ done to deliver a project
+
+motivation:
+Applying Key principles and learned skills:
+Team work
+Deadlines
+Budget
+Vital, Non-negotiable requirements
+Documentation development
+
+Gantt chart to show timing of project
+Aim:
+
+To 
+design an autonomous robot using raspberry pis
+Code 
+Acquire skills and knowledge that can be applied in future scenarios
+(look into further)
+
+
+Background:
+tasks set out by avc paper
+Teams not chosen by us
+Tight budget
+Deadline
+Customer satisfaction
+
+Method:
+why we used;
+Motors
+Batteries
+Design
+Construction
+ Certain elements of programing
+Design process
+Why wheels vs tracks
+Why shape of robot
+Why ir sensors
+Misc (cable routing)
+
+Programming 
+Code in respect to quadrants
+Graphs for sensor “sweet spot”
+Graph of motor speed
