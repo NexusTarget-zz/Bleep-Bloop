@@ -102,8 +102,15 @@ int lineFollow(){
 			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-
-
+		
+		/* Reverse
+		if(errorValue == 0){
+			setMotor(1, -50);
+			setMotor(2, -50);
+			Sleep(0, 5000);
+		}
+		*/
+		
 		printf("%f\n", errorValue); //%f because errorValue is a float
 		// Determines the new motor speeds to alter direction
 		left = 40 + (errorValue * kp) + (dErrorValue *kd) + (totalErrorValue * ki);
