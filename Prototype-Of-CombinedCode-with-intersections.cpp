@@ -14,6 +14,30 @@ int main(){
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
+	
+	//set motors to move forward until front IR sensor detects wall
+	networkGate ();
+}
+
+int networkGate(){
+   init(0);
+   connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
+   send_to_server("Please"); //sends please to the connected server
+   char message[24];
+   receive_from_server(message); //receives message from the connected server
+   printf("%s/n", message);
+   send_to_server(message);
+   printf("%s/n", "Message was sent to the server");
+   
+   Sleep(1,0); //waits for gate to open
+   lineFollow (); //starts following line through gate
+   return 0;
+}
+
+int lineFollow(){
+	init(0);
+	// This sets up the RPi hardware and ensures
+	// everything is working correctly
 	int pLine[32]; //Creates an array to store pixel values
 	int sampleSize = sizeof(pLine)/sizeof(int); //A set variable of the arrays length
 	int pTot; //Total pixel value
@@ -25,36 +49,21 @@ int main(){
 	int left; 
 	int right;
 	double kp = 0.2; //P value in PD controller
-	double kd = 4.0; //D value in PD controller
-	double ki = 4.0; //I value in PD controller
-	double timeStep = 0.2; //The time period used for calculating kp
+	double kd = 0; //D value in PD controller SET TO 0 FOR TUNING	
+	double ki = 0; //I value in PD controller SET TO 0 FOR TUNING
+	double timeStep = 0.2; //The time period used for calculating kd
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
-	int repitition = 10;
+	int repetition = 10;
+	bool lineFound = false; //counts bright pixels found for intersection handling
 
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
 
 	while(true){ //This creates a never ending loop
 		errorValue = 0;
-		/**
-		pTot = 0;
-		avg = 0;
-		take_picture(); //Self explanatory
-		for (int i = 0; i < sampleSize; i++){ //Finds brightness of each required pixel
-			pLine[i] = get_pixel(i*10,120,3);
-			pTot += pLine[i];
-		}
-		avg = (float)pTot/sampleSize; //Gets average brightness of pixels
-		
-		for (int i = 0; i < sampleSize; i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
-			if (pLine[i]>avg){
-				errorValue += 10*(i-sampleSize/2);
-			}
-		}
-*/
 
 //*************************EXPERIMENTAL**************************
-		for (int r = 0; r < repitition; r++)//takes 10 photos, storing the total value for each pixel
+		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
 		{
 			take_picture(); //Self explanatory
 			for (int i = 0; i < sampleSize; i++){ //Finds brightness of each required pixel
@@ -62,16 +71,19 @@ int main(){
 			}
 		}
 		for (int i = 0; i < sampleSize; i++){ //Finds the average brightness of each required pixel
-				pLine[i] = pLine[i]/repitition
+				pLine[i] = pLine[i]/repetition
 			}
-		for (int i = 0; i < sampleSize; i++){ //Checks if the pixel is brighter than half brigtness (making an assumption that black will be consstantly les and white consistantly more)
+		for (int i = 0; i < sampleSize; i++){ //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
 			if (pLine[i]>127){
-				errorValue += 10*(i-sampleSize/2);//adds a positive value if the line is to the right, negative value if line is to the left
+				errorValue += 10*(i-sampleSize/2);// error is a positive value if the line is to the right, negative value if line is to the left
+				lineFound = true;
 			}
 		}
 //*******************************END OF EXPERIMENTAL******************************
-		
-		totalErrorValue += errorValue; //calculating the intergral error value
+		if(!lineFound){ //if robot only sees black, it calls reverse
+			reverse (); //calls reverse, which calls turnLeft, which calls lineFollow again to check if line has been found yet
+		}
+		totalErrorValue += errorValue; //calculating the integral error value
 		
 		time(&start_t); //Finds the current time
 		if (difftime(end_t, start_t) > timeStep) //Runs if the time period is larger than the timestep
@@ -101,3 +113,33 @@ int main(){
 	return 0;
 }
 
+int reverse(void){ //sets motors to reverse for a short period of time
+	setMotor(1, -50);
+	setMotor(2, -50);
+	Sleep(0,5000);
+	turnLeft (); //calls method to turn 90 degrees left. Should then be on track and facing correct direction in any situation
+	return(0);
+		
+}
+
+int turnLeft(void){
+	set_motor(1, -40);
+	set_motor(2, 40);
+	Sleep(1,0);
+	lineFollow (); //calls lineFollow to check whether the line was found
+	return(0);
+}
+
+int turnRight(void){ //not needed for the current line maze. could be helpful in wall maze
+	set_motor(1, 40);
+	set_motor(2, -40);
+	Sleep(1,0);
+	return(0);
+}
+
+int turnAround(void){
+	set_motor(1, 40);
+	set_motor(2, -40);
+	Sleep(2,0);
+	return(0);
+}
