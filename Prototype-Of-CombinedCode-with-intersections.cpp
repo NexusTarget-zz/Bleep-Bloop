@@ -145,7 +145,7 @@ int turnAround(void){
 	int repetition = 10;
 	bool lineFound = false; //false if all pixels are black
 
-	open_screen_stream(); // MAY NOT NEED stream may still be open from lineFollow 
+	//open_screen_stream(); // MAY NOT NEED stream may still be open from lineFollow 
 	
 	while(lineFound == false){
 	set_motor(1, -20);
