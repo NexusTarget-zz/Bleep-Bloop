@@ -43,7 +43,6 @@ int networkGate()
 
 int lineFollow()
 {
-	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 	int sampleSize = 32;//A set variable of the array's length
