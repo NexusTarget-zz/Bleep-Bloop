@@ -15,7 +15,7 @@ int main(){
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 	
-	//set motors to move forward until front IR sensor detects wall
+	//NEED CODE set motors to move forward until front IR sensor detects wall
 	networkGate ();
 }
 
@@ -34,14 +34,12 @@ int networkGate(){
    return 0;
 }
 
-int lineFollow(){
+int lineFollow(){ 
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 	int pLine[32]; //Creates an array to store pixel values
 	int sampleSize = sizeof(pLine)/sizeof(int); //A set variable of the arrays length
-	int pTot; //Total pixel value
-	float avg; //The average brightness of pixels
 	float errorValue; //Error value that sets the distance between line and centre
 	float totalErrorValue = 0;
 	float prevErrorValue = 0; //Previous value of error used to calculate the dErrorValue
@@ -81,7 +79,7 @@ int lineFollow(){
 		}
 //*******************************END OF EXPERIMENTAL******************************
 		if(!lineFound){ //if robot only sees black, it calls reverse
-			reverse (); //calls reverse, which calls turnLeft, which calls lineFollow again to check if line has been found yet
+			turnAround (); //calls turnAround which rotates the robot slowly to the left until the line is found again
 		}
 		totalErrorValue += errorValue; //calculating the integral error value
 		
@@ -112,7 +110,7 @@ int lineFollow(){
 	close_screen_stream();
 	return 0;
 }
-
+/* commented out methods because they aren't needed, may be used in future. probably not
 int reverse(void){ //sets motors to reverse for a short period of time
 	setMotor(1, -50);
 	setMotor(2, -50);
@@ -136,10 +134,37 @@ int turnRight(void){ //not needed for the current line maze. could be helpful in
 	Sleep(1,0);
 	return(0);
 }
-
+*/
 int turnAround(void){
-	set_motor(1, 40);
-	set_motor(2, -40);
-	Sleep(2,0);
+	int pLine[32]; //Creates an array to store pixel values
+	int sampleSize = sizeof(pLine)/sizeof(int); //A set variable of the array's length
+	int repetition = 10;
+	bool lineFound = false; //false if all pixels are black
+
+	open_screen_stream(); // MAY NOT NEED stream may still be open from lineFollow 
+	
+	while(lineFound == false){
+	set_motor(1, -20);
+	set_motor(2, 20)
+		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
+			{
+				take_picture(); //Self explanatory
+				for (int i = 0; i < sampleSize; i++){ //Finds brightness of each required pixel
+					pLine[i] += get_pixel(i*10,120,3);
+				}
+			}
+			for (int i = 0; i < sampleSize; i++){ //Finds the average brightness of each required pixel
+					pLine[i] = pLine[i]/repetition
+				}
+			for (int i = 0; i < sampleSize; i++){ //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
+				if (pLine[i]>127){
+					lineFound = true;
+				}
+			}
+	update_screen();
+	}
+	
+	close_screen_stream();
+	lineFollow ();
 	return(0);
 }
