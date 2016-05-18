@@ -13,16 +13,16 @@ extern "C" int update_screen();
 extern "C" int open_screen_stream();
 extern "C" int close_screen_stream();
 
-+int networkGate();
-+int lineFollow();
-+int turnAround();
+int networkGate();
+int lineFollow();
+int turnAround();
 
 int main()
 {
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
-	
+
 	//NEED CODE set motors to move forward until front IR sensor detects wall
 	networkGate ();
 }
@@ -37,23 +37,23 @@ int networkGate()
    printf("%s/n", message);
    send_to_server(message);
    printf("%s/n", "Message was sent to the server");
-   
+
    Sleep(1,0); //waits for gate to open
    lineFollow (); //starts following line through gate
    return 0;
 }
 
 int lineFollow()
-{ 
+{
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 	int sampleSize = 32;//A set variable of the array's length
 	int pLine[sampleSize]; //Creates an array to store pixel values
 	float errorValue, totalErrorValue = 0, prevErrorValue = 0, dErrorValue, errorDiff; //The error values for the P, I, D, D and D
-	int left, right; 
+	int left, right;
 	double kp = 0.2; //P value in PD controller
-	double kd = 0; //D value in PD controller SET TO 0 FOR TUNING	
+	double kd = 0; //D value in PD controller SET TO 0 FOR TUNING
 	double ki = 0; //I value in PD controller SET TO 0 FOR TUNING
 	double timeStep = 0.2; //The time period used for calculating kd
 	time_t start_t, end_t = 0; //The start and the end points for calculating the time difference
@@ -75,7 +75,7 @@ int lineFollow()
 			pTot += pLine[i];
 		}
 		avg = (float)pTot/sampleSize; //Gets average brightness of pixels
-		
+
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
 			if (pLine[i]>avg){
@@ -83,7 +83,7 @@ int lineFollow()
 			}
 		}
 		*/
-		
+
 		//*************************EXPERIMENTAL**************************
 		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
 		{
@@ -95,7 +95,7 @@ int lineFollow()
 		}
 		for (int i = 0; i < sampleSize; i++) //Finds the average brightness of each required pixel
 		{
-			pLine[i] = pLine[i]/repetition
+			pLine[i] = pLine[i]/repetition;
 		}
 		for (int i = 0; i < sampleSize; i++) //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
 		{
@@ -111,7 +111,7 @@ int lineFollow()
 			turnAround (); //calls turnAround which rotates the robot slowly to the left until the line is found again
 		}
 		totalErrorValue += errorValue; //calculating the integral error value
-		
+
 		time(&start_t); //Finds the current time
 		if (difftime(end_t, start_t) > timeStep) //Runs if the time period is larger than the timestep
 		{
@@ -145,9 +145,8 @@ int reverse(void){ //sets motors to reverse for a short period of time
 	Sleep(0,5000);
 	turnLeft (); //calls method to turn 90 degrees left. Should then be on track and facing correct direction in any situation
 	return(0);
-		
-}
 
+}
 int turnLeft(void){
 	set_motor(1, -40);
 	set_motor(2, 40);
@@ -155,7 +154,6 @@ int turnLeft(void){
 	lineFollow (); //calls lineFollow to check whether the line was found
 	return(0);
 }
-
 int turnRight(void){ //not needed for the current line maze. could be helpful in wall maze
 	set_motor(1, 40);
 	set_motor(2, -40);
@@ -169,11 +167,11 @@ int turnAround(void)
 	int pLine[sampleSize]; //Creates an array to store pixel values
 	int repetition = 10;
 	bool lineFound = false; //false if all pixels are black
-	
+
 	while(lineFound == false)
 	{
 		set_motor(1, -20);
-		set_motor(2, 20)
+		set_motor(2, 20);
 		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
 		{
 			take_picture(); //Self explanatory
@@ -184,7 +182,7 @@ int turnAround(void)
 		}
 		for (int i = 0; i < sampleSize; i++) //Finds the average brightness of each required pixel
 		{
-			pLine[i] = pLine[i]/repetition
+			pLine[i] = pLine[i]/repetition;
 		}
 		for (int i = 0; i < sampleSize; i++) //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
 		{
