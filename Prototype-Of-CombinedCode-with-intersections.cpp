@@ -10,6 +10,10 @@ extern "C" int update_screen();
 extern "C" int open_screen_stream();
 extern "C" int close_screen_stream();
 
++int networkGate();
++int lineFollow();
++int turnAround();
+
 int main(){
 	init(0);
 	// This sets up the RPi hardware and ensures
