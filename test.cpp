@@ -45,8 +45,9 @@ int lineFollow()
 {
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
-	int sampleSize = 32;//A set variable of the array's length
-	int pLine[sampleSize]; //Creates an array to store pixel values
+	
+	int pLine[32]; //Creates an array to store pixel values
+	int sampleSize = sizeof(pLine)/sizeof(int);//A set variable of the array's length
 	float errorValue, totalErrorValue = 0, prevErrorValue = 0, dErrorValue, errorDiff; //The error values for the P, I, D, D and D
 	int left, right;
 	double kp = 0.2; //P value in PD controller
@@ -54,9 +55,10 @@ int lineFollow()
 	double ki = 0; //I value in PD controller SET TO 0 FOR TUNING
 	double timeStep = 0.2; //The time period used for calculating kd
 	time_t start_t, end_t = 0; //The start and the end points for calculating the time difference
-	int repetition = 10; //The amount of repeating
 	bool lineFound = false; //counts bright pixels found for intersection handling
-
+	double pTot;
+	float avg;
+	
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
 
 	while(true) //This creates a never ending loop
@@ -115,7 +117,7 @@ int lineFollow()
 	close_screen_stream();
 	return 0;
 }
-/* commented out methods because they aren't needed, may be used in future. probably not
+/** commented out methods because they aren't needed, may be used in future. probably not
 int reverse(void){ //sets motors to reverse for a short period of time
 	setMotor(1, -50);
 	setMotor(2, -50);
@@ -138,17 +140,18 @@ int turnRight(void){ //not needed for the current line maze. could be helpful in
 	return(0);
 }
 */
-int turnAround(void)
+int turnAround()
 {
-	int sampleSize = 32;//A set variable of the array's length
-	int pLine[sampleSize]; //Creates an array to store pixel values
-	int repetition = 10;
+	
+	int pLine[32]; //Creates an array to store pixel values
+	int sampleSize = sixeof(pLine)/sizeof(int);//A set variable of the array's length
 	bool lineFound = false; //false if all pixels are black
-
+	double pTot;
+	float avg;
 	while(lineFound == false)
 	{
 		set_motor(1, -20);
-		set_motor(2, -20);
+		set_motor(2, 20);
 		for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel
 		{
 			pLine[i] = get_pixel(i*10,120,3);
@@ -159,7 +162,7 @@ int turnAround(void)
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
 			if (pLine[i]>avg){
-				lineFollow = true;
+				lineFound = true;
 			}
 		}
 		update_screen();
