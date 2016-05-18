@@ -17,9 +17,7 @@ int networkGate();
 int lineFollow();
 int turnAround();
 
-int main()
-{
-	init(0);
+int main(){
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
 
@@ -65,7 +63,7 @@ int lineFollow()
 	while(true) //This creates a never ending loop
 	{
 		errorValue = 0;
-		/** The origional line detection code
+		lineFound = false;
 		pTot = 0;
 		avg = 0;
 		take_picture(); //Self explanatory
@@ -80,32 +78,12 @@ int lineFollow()
 		{
 			if (pLine[i]>avg){
 				errorValue += 10*(i-sampleSize/2);
-			}
-		}
-		*/
-
-		//*************************EXPERIMENTAL**************************
-		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
-		{
-			take_picture(); //Self explanatory
-			for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel
-			{
-				pLine[i] += get_pixel(i*10,120,3);
-			}
-		}
-		for (int i = 0; i < sampleSize; i++) //Finds the average brightness of each required pixel
-		{
-			pLine[i] = pLine[i]/repetition;
-		}
-		for (int i = 0; i < sampleSize; i++) //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
-		{
-			if (pLine[i]>127)
-			{
-				errorValue += 10*(i-sampleSize/2);// error is a positive value if the line is to the right, negative value if line is to the left
 				lineFound = true;
 			}
 		}
-		//*******************************END OF EXPERIMENTAL******************************
+		
+
+		
 		if(!lineFound) //if robot only sees black, it calls reverse
 		{
 			turnAround (); //calls turnAround which rotates the robot slowly to the left until the line is found again
@@ -171,24 +149,18 @@ int turnAround(void)
 	while(lineFound == false)
 	{
 		set_motor(1, -20);
-		set_motor(2, 20);
-		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
+		set_motor(2, -20);
+		for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel
 		{
-			take_picture(); //Self explanatory
-			for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel
-			{
-				pLine[i] += get_pixel(i*10,120,3);
-			}
+			pLine[i] = get_pixel(i*10,120,3);
+			pTot += pLine[i];
 		}
-		for (int i = 0; i < sampleSize; i++) //Finds the average brightness of each required pixel
+		avg = (float)pTot/sampleSize; //Gets average brightness of pixels
+
+		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
-			pLine[i] = pLine[i]/repetition;
-		}
-		for (int i = 0; i < sampleSize; i++) //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
-		{
-			if (pLine[i]>127)
-			{
-				lineFound = true;
+			if (pLine[i]>avg){
+				lineFollow = true;
 			}
 		}
 		update_screen();
