@@ -14,7 +14,8 @@ extern "C" int close_screen_stream();
 +int lineFollow();
 +int turnAround();
 
-int main(){
+int main()
+{
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
@@ -23,7 +24,8 @@ int main(){
 	networkGate ();
 }
 
-int networkGate(){
+int networkGate()
+{
    init(0);
    connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
    send_to_server("Please"); //sends please to the connected server
@@ -38,7 +40,8 @@ int networkGate(){
    return 0;
 }
 
-int lineFollow(){ 
+int lineFollow()
+{ 
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
@@ -168,25 +171,25 @@ int turnAround(void)
 	{
 		set_motor(1, -20);
 		set_motor(2, 20)
-			for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
+		for (int r = 0; r < repetition; r++)//takes 10 photos, storing the total value for each pixel
+		{
+			take_picture(); //Self explanatory
+			for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel
 			{
-				take_picture(); //Self explanatory
-				for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel
-				{
-					pLine[i] += get_pixel(i*10,120,3);
-				}
+				pLine[i] += get_pixel(i*10,120,3);
 			}
-			for (int i = 0; i < sampleSize; i++) //Finds the average brightness of each required pixel
+		}
+		for (int i = 0; i < sampleSize; i++) //Finds the average brightness of each required pixel
+		{
+			pLine[i] = pLine[i]/repetition
+		}
+		for (int i = 0; i < sampleSize; i++) //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
+		{
+			if (pLine[i]>127)
 			{
-				pLine[i] = pLine[i]/repetition
+				lineFound = true;
 			}
-			for (int i = 0; i < sampleSize; i++) //Checks if the pixel is brighter than half brightness (making an assumption that black will be consstantly les and white consistantly more)
-			{
-				if (pLine[i]>127)
-				{
-					lineFound = true;
-				}
-			}
+		}
 		update_screen();
 	}
 	return(0);
