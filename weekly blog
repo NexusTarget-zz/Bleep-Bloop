@@ -1,25 +1,57 @@
-3/5/16
-
+<ul>3/5/16</ul>
 This week was a very productive week, the software is moving forward very fast, jack and nick have implemented the code for
 the  camera to follow the line and open the gate, but we haven't yet got the code working for when the tape diverges.
-We have implemented a rudimentary PD controller in our code to help with tracking. Finn is now helping Jack and Nick with finding the code
-for better error checking and improving the PD design. 
-
+We have implemented a rudimentary PD controller in our code to help with tracking. Finn is now helping Jack and Nick with
+finding the code for better error checking and improving the PD design. 
 As for the hardware and design, Krishna had an in depth parts list for what we need until 80%.
 Cicero has been ticking away at learning the CAD software and is now in the initial planning phase of the final build.
 They are now working on measuring the 80% part of the maze, and thinking about necessary hardware to complete it.
 This is useful for the final design because size of the bot affects turning radius and ability to traverse the maze.
 
-10/5/16
-
+<ul>10/5/16</ul>
 We had some issues with the coding on the Pi this past week; due to network issues, we struggled to SSH into the pi, this 
 meant that the coding of the Pi itself went a lot slower this week than last week. Currently the code team is still working 
 on the PID controller. Next week they will move on to prioritising what happens when there is a junction or right angle corner 
 on the line, or when the line is lost altogether.
-
 The design team however have made some great progress; the finalised parts list is now up and includes the parts we will need 
 to get to 100%. The base of the bot (rev.1) has been designed in CAD. In the coming week they will be attaching motors and 
 sensors and refining the design of the base.
-
 The reporting team has done brief notes on what is needed in the progress report, so to help the other team members with their 
 write up. This week they will edit and revise the weekly goals, and review whether the previous goals have been achieved.
+
+<ul>21/5/16</ul>
+This week the reports team provided extra help to the design and software teams to make sure things moved along in a timely
+manner, i worked with the design team and finn helped the software team. As well as this we worked towards tidying up the 
+GitHub and writing the weekly report up. 
+This week was a very productive one for the design team we got through a few revisions, the changes and thought processes
+are as follows;  
+in rev 1 the base was printed in one section with mounting holes for the raspberry pi be screwed into. Also there were slots
+designed in the top of the base for the wheels so they would not move laterally when screwed into the base. 
+There was however, one major issue. Because the printer prints in layers using heated plastic, as the plastic sets it 
+compresses, meaning the upper layer would cause tension on the layer below as the base was being printed,this caused the layers
+to lift and curl upward and towards the center. To fix this, Cicero decided to make a revision to this design and have the base 
+printed in two parts, they would be attached via a tooth and slot design. We also decided to move the groves for the wheels to 
+the underside of the base. Though this compromises aesthetic appeal (due to a less appealing cable run and the mechanism not 
+having a clean housing), it allows the AV to have a higher clearance from the ground. This allows for our screws to be longer 
+when necessary. The same mounting style was kept for the pi. The pi was then moved from the test bed to this revision. For 
+revision 3 we decided that the ir sensors would need to be mounted, so we created vertical walls on the front and sides to 
+accommodate for this. We then added a groove for the rear wheel, this allows us to use less screws and also meant that there was 
+less weight in the rear of the AV. After that we added a hole for the camera to be mounted into and created housing for the 
+battery to be mounted in. it is located towards the front of the base so that most of the weight would be placed towards the 
+front wheels, giving the AV more traction. Having the battery in this position means our Pi would have to be mounted vertically 
+above it, so we created standoffs in place of the mounting holes to accommodate for this. One fatal flaw of this revision was 
+the fact that it was rather large, meaning it would have to be more precise when going through the maze section due to it being
+a tight fit. We revised this in rev 4 by tightening unused space between components, reducing overall length and width and
+rounding edges. These modifications will help to increase maneuverability, and also make the coders job more easy because the
+AV won't require as much tuning. We believe this will be the final major design change for the chassis.
+As for next week, the design team hopes to have the Pi installed in the rev 4 chassis so that the coders can tune the PIDto suit.
+We will also revise the design and make holes for the IR sensors to mount to and cable management holes.
+The code team this week got a lot done, they first re-tuned the PID to the new rev 2 chassis. When tuning the AV we found 
+that we were getting bad oscillations due to the error value being multiplied by ten. Then they implemented multiple methods 
+for ways the AV can turn (eg  motor left off, right forward VS motor left reverse, right forward), as a group, we were thinking 
+that one would be more beneficial in the maze and one for line following. Also they implemented code for turning right angled corners 
+and reversing the AV when the line can’t be found.  T intersection code has also been started on and is currently in the brainstorming 
+stage.
+In the next week the code team hopes to be able to tune the PID for the rev 4 chassis and then to fully implement the code for 
+T-intersections.
+
