@@ -24,7 +24,7 @@ int main(){
 	int left; 
 	int right;
 	double kp = 10; //P value in PD controller
-	double kd = 0; //D value in PD controller
+	double kd = 1; //D value in PD controller
 	double ki = 0;
 	double timeStep = 0.2; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
