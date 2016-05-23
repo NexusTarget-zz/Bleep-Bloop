@@ -46,12 +46,16 @@ rounding edges. These modifications will help to increase maneuverability, and a
 AV won't require as much tuning. We believe this will be the final major design change for the chassis.
 As for next week, the design team hopes to have the Pi installed in the rev 4 chassis so that the coders can tune the PIDto suit.
 We will also revise the design and make holes for the IR sensors to mount to and cable management holes.
-The code team this week got a lot done, they first re-tuned the PID to the new rev 2 chassis. When tuning the AV we found 
-that we were getting bad oscillations due to the error value being multiplied by ten. Then they implemented multiple methods 
-for ways the AV can turn (eg  motor left off, right forward VS motor left reverse, right forward), as a group, we were thinking 
-that one would be more beneficial in the maze and one for line following. Also they implemented code for turning right angled corners 
-and reversing the AV when the line can’t be found.  T intersection code has also been started on and is currently in the brainstorming 
-stage.
-In the next week the code team hopes to be able to tune the PID for the rev 4 chassis and then to fully implement the code for 
-T-intersections.
+
+The code team this week got a lot done. They combined all of the separate parts to the code into one file with functions that
+can be called when needed. They also added intersection handling, with code for recognising when a junction is reached. They tried
+to implement static turning functions, but realised that this would not be reliable as the robot would turn different amounts 
+depending on the battery charge level. The current method of handling intersections is all combined in the line following function.
+When it recognises that it has lost the line, it pivots to the left until the line is found again. This seems to work well, apart
+from when the robot loses the line when it isn't meant to, it occassionally does a 180 and returns to the start of the maze.
+
+Once these revisions were done, they first re-tuned the PID to the new rev 2 chassis. When tuning the AV we found 
+that we were getting bad oscillations due to the error value being multiplied by ten. They managed to get the robot running fairly
+well, but it will have to be re-tuned with the new chassis as it is much smaller. In the next week the code team hopes to be able to 
+tune the PID for the rev 4 chassis and then to implement the code for T-intersections without any failures.
 
