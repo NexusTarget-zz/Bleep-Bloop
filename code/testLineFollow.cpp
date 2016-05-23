@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <time.h>
-#include <iostream>
 
 extern "C" int set_motor(int motor, int speed);
 extern "C" int init(int d_lev);
