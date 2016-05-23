@@ -23,7 +23,7 @@ int main(){
 	float errorTot = 0;
 	int left; 
 	int right;
-	double kp = 1; //P value in PD controller
+	double kp = 5; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
 	double timeStep = 0.2; //The time period used for calculating kp
@@ -59,7 +59,7 @@ int main(){
 			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-
+/**
 		if(!lineFound){
 			set_motor(1, -80);
 			set_motor(2, -80);
@@ -67,7 +67,7 @@ int main(){
 			set_motor(1, 40);
 			set_motor(2, -40);
 		}else{
-
+*/
 			errorValue = errorValue/sampleSize; //Gets average of error
 			printf("%f\n", errorValue); //%f because errorValue is a float
 			// Determines the new motor speeds to alter direction
@@ -79,7 +79,7 @@ int main(){
 			set_motor(2, right);
 			printf("left = %d, right = %d\n", left, right);
 			
-		}
+	//	}
 		//printf("pLine = %d, %s",pLine, " ");
 		//for(int i = 0; i < sampleSize; i++){
 		//	printf("pLine = %d\n", pLine[i]);
