@@ -18,7 +18,6 @@ int main(){
 	int pLine[32]; //Creates an array to store pixel values
 	int sampleSize = sizeof(pLine)/sizeof(int); //A set variable of the arrays length
 	int pTot;
-	float avg; //The average brightness of pixels
 	float errorValue; //Error value that sets the distance between line and centre
 	float prevErrorValue = 0; //Previous value of error used to calculate the dErrorValue
 	float dErrorValue;
@@ -32,13 +31,10 @@ int main(){
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound = false;
-	int random = 1;
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
-	//printf("sample size = %d\n", sampleSize);
 	while(true){ //This creates a never ending loop
 		pTot = 0;
 		errorValue = 0;
-		avg = 0;
 		lineFound = false;
 		take_picture(); //Self explanatory
 
@@ -47,8 +43,6 @@ int main(){
 			pLine[i] = get_pixel(i*10,120,3);
 			pTot += pLine[i];
 		}
-
-		avg = (float)pTot/sampleSize; //Gets average brightness of pixels
 
 		for (int i = 0; i < sampleSize; i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 			if (pLine[i]>127){
