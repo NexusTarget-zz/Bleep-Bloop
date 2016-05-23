@@ -25,10 +25,10 @@ int main(){
 	float errorTot = 0;
 	int left; 
 	int right;
-	double kp = 11.5; //P value in PD controller
-	double kd = 1.25; //D value in PD controller
+	double kp = 10; //P value in PD controller
+	double kd = 0; //D value in PD controller
 	double ki = 0;
-	double timeStep = 1.0; //The time period used for calculating kp
+	double timeStep = 0.2; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound = false;
@@ -45,7 +45,6 @@ int main(){
 		for (int i = 0; i < sampleSize; i++){ //Finds brightness of each required pixel	
 			//printf("i = %d\n", i);
 			pLine[i] = get_pixel(i*10,120,3);
-			//Sleep(0, 500000);
 			pTot += pLine[i];
 		}
 
