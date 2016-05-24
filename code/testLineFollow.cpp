@@ -90,9 +90,9 @@ int main()
 			printf(" --- Centre\n");
 		}
 		
-		if(pixelCount >= 16)
+		if(pixelCount >= 28)
 		{
-			if(errorValue >= 0 || pixelCount >= 24) //if line not found or left 90deg corner/T junction detected turn left
+			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
 			/**	set_motor(1, -80); 
 				set_motor(2, -80);
