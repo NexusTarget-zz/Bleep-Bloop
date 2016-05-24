@@ -87,7 +87,6 @@ int main()
 			// Changes the motor speeds to the predetermined values
 			set_motor(1, left);
 			set_motor(2, right);
-			printf("left = %d, right = %d\n", left, right);
 		}
 	}
 
