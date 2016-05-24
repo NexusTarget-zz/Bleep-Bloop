@@ -31,7 +31,6 @@ int main()
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound = false;
-	open_screen_stream(); //Allows the camera to be displayed on the desktop
 	while(true) //This creates a never ending loop
 	{
 		pTot = 0;
@@ -41,7 +40,6 @@ int main()
 
 		for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
 		{
-			//printf("i = %d\n", i);
 			pLine[i] = get_pixel(i*10,120,3);
 			pTot += pLine[i];
 		}
@@ -82,7 +80,6 @@ int main()
 		{
 
 			errorValue = errorValue/sampleSize; //Gets average of error
-			printf("%f\n", errorValue); //%f because errorValue is a float
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
 			left = 50 - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
@@ -92,11 +89,6 @@ int main()
 			set_motor(2, right);
 			printf("left = %d, right = %d\n", left, right);
 		}
-		//printf("pLine = %d, %s",pLine, " ");
-		//for(int i = 0; i < sampleSize; i++){
-		//	printf("pLine = %d\n", pLine[i]);
-		//}
-		update_screen();
 	}
 
 	close_screen_stream();
