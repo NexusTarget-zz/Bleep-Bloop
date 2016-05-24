@@ -24,7 +24,7 @@ int main()
 	float errorTot = 0;
 	int left; 
 	int right;
-	double kp = 10; //P value in PD controller
+	double kp = 50; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
