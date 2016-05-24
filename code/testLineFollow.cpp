@@ -50,7 +50,12 @@ int main()
 		{
 			if (pLine[i]>127){
 				errorValue += i-sampleSize/2;
-				lineFound = true;	
+				lineFound = true;
+				printf("#");
+			}
+			else
+			{
+				printf(0);
 			}
 		}
 
