@@ -24,7 +24,7 @@ int main()
 	float errorTot = 0;
 	int left; 
 	int right;
-	double kp = 6; //P value in PD controller
+	double kp = 10; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
@@ -76,7 +76,7 @@ int main()
 			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-		
+/**		
 		if(!lineFound)
 		{
 			set_motor(1, -80);
@@ -87,7 +87,7 @@ int main()
 		}
 		else
 		{
-
+*/
 			errorValue = errorValue/sampleSize; //Gets average of error
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
@@ -96,7 +96,7 @@ int main()
 			// Changes the motor speeds to the predetermined values
 			set_motor(1, left);
 			set_motor(2, right);
-		}
+	//	}
 	}
 
 	close_screen_stream();
