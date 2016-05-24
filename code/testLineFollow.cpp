@@ -94,14 +94,14 @@ int main()
 		{
 			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
-				set_motor(1, motorSpeed/4);
-				set_motor(2, motorSpeed);
+				set_motor(1, motorSpeed);
+				set_motor(2, motorSpeed/4);
 				Sleep(1, 00000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
-				set_motor(1, motorSpeed);
-				set_motor(2, motorSpeed/4);
+				set_motor(1, motorSpeed/4);
+				set_motor(2, motorSpeed);
 				Sleep(1, 00000);
 			}
 		}
@@ -122,11 +122,11 @@ int main()
 		{
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
-			left = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
-			right = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
+			right = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
+			left = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
 			// Changes the motor speeds to the predetermined values
-			set_motor(1, left);
-			set_motor(2, right);
+			set_motor(1, right);
+			set_motor(2, left);
 		}
 	}
 	
