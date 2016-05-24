@@ -29,7 +29,7 @@ int main()
 	double kd = 0.1; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
-	double timeStep = 0.2; //The time period used for calculating kp
+	double timeStep = 0.1; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound = false;
