@@ -49,7 +49,7 @@ int main()
 
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
-			if (pLine[i]>80)
+			if (pLine[i]>100)
 			{
 				pixelCount++;
 				errorValue += i-sampleSize/2;
