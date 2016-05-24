@@ -23,7 +23,7 @@ int main(){
 	float errorTot = 0;
 	int left; 
 	int right;
-	double kp = 7.5; //P value in PD controller
+	double kp = 6; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
 	double timeStep = 0.2; //The time period used for calculating kp
