@@ -26,7 +26,7 @@ int main()
 	int right;
 	int motorSpeed = 50;
 	double kp = 3; //P value in PD controller
-	double kd = 0.1; //D value in PD controller
+	double kd = 0.5; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
 	double timeStep = 0.1; //The time period used for calculating kp
