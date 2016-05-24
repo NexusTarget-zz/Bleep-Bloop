@@ -77,7 +77,7 @@ int main()
 			prevErrorValue = errorValue;
 		}
 /**		
-		if(!lineFound)
+		if(!lineFound || pixelCount >= 8)
 		{
 			set_motor(1, -80);
 			set_motor(2, -80);
