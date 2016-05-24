@@ -76,8 +76,8 @@ int main()
 			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-/**		
-		if(!lineFound || pixelCount >= 8)
+		
+		if(!lineFound || pixelCount >= 12)
 		{
 			if(!lineFound || errorValue <= 0 || pixelCount >= 24){ //if line not found or left 90deg corner/T junction detected turn left
 				set_motor(1, -80); 
@@ -95,7 +95,7 @@ int main()
 		}
 		else
 		{
-*/
+
 			errorValue = errorValue/sampleSize; //Gets average of error
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
@@ -104,7 +104,7 @@ int main()
 			// Changes the motor speeds to the predetermined values
 			set_motor(1, left);
 			set_motor(2, right);
-	//	}
+		}
 	}
 
 	close_screen_stream();
