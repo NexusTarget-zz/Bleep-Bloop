@@ -77,7 +77,7 @@ int main()
 			prevErrorValue = errorValue;
 		}
 		
-		if(!lineFound || pixelCount >= 12)
+		if(!lineFound || pixelCount >= 16)
 		{
 			if(!lineFound || errorValue <= 0 || pixelCount >= 24){ //if line not found or left 90deg corner/T junction detected turn left
 			/**	set_motor(1, -80); 
