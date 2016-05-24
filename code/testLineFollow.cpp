@@ -27,6 +27,7 @@ int main()
 	double kp = 6; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
+	double pixelCount;
 	double timeStep = 0.2; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
@@ -34,6 +35,7 @@ int main()
 	while(true) //This creates a never ending loop
 	{
 		pTot = 0;
+		pixelCount = 0;
 		errorValue = 0;
 		lineFound = false;
 		take_picture(); //Self explanatory
@@ -46,7 +48,9 @@ int main()
 
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
-			if (pLine[i]>127){
+			if (pLine[i]>127)
+			{
+				pixelCount++;
 				errorValue += i-sampleSize/2;
 				lineFound = true;
 				printf("#");
@@ -56,7 +60,12 @@ int main()
 				printf("0");
 			}
 		}
-
+		printf("\n")
+		if(pixelCount == 0)
+		{
+			pixelCount = 1;
+		}
+		errorValue = errorValue/pixelCount;
 		time(&start_t); //Finds the current time
 		if (difftime(end_t, start_t) > timeStep)
 		{
