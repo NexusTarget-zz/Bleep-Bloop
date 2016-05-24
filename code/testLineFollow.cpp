@@ -49,7 +49,7 @@ int main()
 
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
-			if (pLine[i]>100)
+			if (pLine[i]>95)
 			{
 				pixelCount++;
 				errorValue += i-sampleSize/2;
@@ -96,13 +96,13 @@ int main()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed/4);
-				Sleep(1, 00000);
+				Sleep(0, 75000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
 				set_motor(1, motorSpeed/4);
 				set_motor(2, motorSpeed);
-				Sleep(1, 00000);
+				Sleep(0, 75000);
 			}
 		}
 		else if(!lineFound)
