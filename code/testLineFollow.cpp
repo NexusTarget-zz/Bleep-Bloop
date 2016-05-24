@@ -10,7 +10,8 @@ extern "C" int update_screen();
 extern "C" int open_screen_stream();
 extern "C" int close_screen_stream();
 
-int main(){
+int main()
+{
 	init(0);
 	// This sets up the RPi hardware and ensures
 	// everything is working correctly
@@ -31,19 +32,22 @@ int main(){
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound = false;
 	open_screen_stream(); //Allows the camera to be displayed on the desktop
-	while(true){ //This creates a never ending loop
+	while(true) //This creates a never ending loop
+	{
 		pTot = 0;
 		errorValue = 0;
 		lineFound = false;
 		take_picture(); //Self explanatory
 
-		for (int i = 0; i < sampleSize; i++){ //Finds brightness of each required pixel	
+		for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
+		{
 			//printf("i = %d\n", i);
 			pLine[i] = get_pixel(i*10,120,3);
 			pTot += pLine[i];
 		}
 
-		for (int i = 0; i < sampleSize; i++){ //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
+		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
+		{
 			if (pLine[i]>127){
 				errorValue += i-sampleSize/2;
 				lineFound = true;	
@@ -51,7 +55,8 @@ int main(){
 		}
 
 		time(&start_t); //Finds the current time
-		if (difftime(end_t, start_t) > timeStep){
+		if (difftime(end_t, start_t) > timeStep)
+		{
 			
 			end_t = start_t;
 			//Formulas used to calculate the dErrorValue
@@ -59,15 +64,18 @@ int main(){
 			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-/**
-		if(!lineFound){
+		
+		if(!lineFound)
+		{
 			set_motor(1, -80);
 			set_motor(2, -80);
 			Sleep(0, 5000);
 			set_motor(1, 40);
 			set_motor(2, -40);
-		}else{
-*/
+		}
+		else
+		{
+
 			errorValue = errorValue/sampleSize; //Gets average of error
 			printf("%f\n", errorValue); //%f because errorValue is a float
 			// Determines the new motor speeds to alter direction
@@ -78,8 +86,7 @@ int main(){
 			set_motor(1, left);
 			set_motor(2, right);
 			printf("left = %d, right = %d\n", left, right);
-			
-	//	}
+		}
 		//printf("pLine = %d, %s",pLine, " ");
 		//for(int i = 0; i < sampleSize; i++){
 		//	printf("pLine = %d\n", pLine[i]);
