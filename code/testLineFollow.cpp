@@ -106,7 +106,6 @@ int main()
 			set_motor(2, right);
 		}
 	}
-
-	close_screen_stream();
+	
 	return 0;
 }
