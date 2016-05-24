@@ -77,24 +77,6 @@ int main()
 			prevErrorValue = errorValue;
 		}
 		
-		if(!lineFound || pixelCount >= 16)
-		{
-			if(!lineFound || errorValue >= 0 || pixelCount >= 24){ //if line not found or left 90deg corner/T junction detected turn left
-			/**	set_motor(1, -80); 
-				set_motor(2, -80);
-				Sleep(0, 5000); */
-				set_motor(1, 40);
-				set_motor(2, -40);
-			}else if(errorValue < 0){ 	//if right hand 90deg corner found, turn right
-			/**	set_motor(1, -80);
-				set_motor(2, -80);
-				Sleep(0, 5000); */
-				set_motor(1, -40);
-				set_motor(2, 40);
-			}
-		}
-		else
-		{
 		if(errorValue >= 0)
 		{
 			printf(" --- Right\n");
@@ -103,6 +85,40 @@ int main()
 		{
 			printf(" --- Left\n");
 		}
+		
+		if(pixelCount >= 16)
+		{
+			if(errorValue >= 0 || pixelCount >= 24) //if line not found or left 90deg corner/T junction detected turn left
+			{
+			/**	set_motor(1, -80); 
+				set_motor(2, -80);
+				Sleep(0, 5000); */
+				set_motor(1, 40);
+				set_motor(2, -40);
+			}else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
+			{
+			/**	set_motor(1, -80);
+				set_motor(2, -80);
+				Sleep(0, 5000); */
+				set_motor(1, -40);
+				set_motor(2, 40);
+			}
+		}
+		else if(!lineFound)
+		{
+			if(prevErrorValue >= 0)
+			{
+				set_motor(1, 40);
+				set_motor(2, -40);
+			}
+			else if(prevErrorValue < 0)
+			{
+				set_motor(1, -40);
+				set_motor(2, 40);
+			}
+		}
+		else
+		{
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
 			left = 50 - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
