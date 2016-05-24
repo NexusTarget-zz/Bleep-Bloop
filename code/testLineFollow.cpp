@@ -64,34 +64,45 @@ int main()
 		
 		if(pixelCount == 0)
 		{
-			pixelCount = 1;
+			errorValue = 0;
+			printf(" --- Lost\n");
 		}
-		errorValue = errorValue/pixelCount;
+		else
+		{
+			errorValue = errorValue/pixelCount;
+			
+			if(errorValue > 0)
+			{
+				printf(" --- Right\n");
+			}
+			else if(errorValue < 0)
+			{
+				printf(" --- Left\n");
+			}
+			else
+			{
+				printf(" --- Centre\n");
+			}
+		}
+		
+		
+		
 		time(&start_t); //Finds the current time
 		if (difftime(start_t, end_t) > timeStep)
 		{
 			end_t = start_t;
 			//Formulas used to calculate the dErrorValue
 			double errorDiff = errorValue - prevErrorValue;
-			dErrorValue = (float)errorDiff/timeStep;
+			dErrorValue = (float)errorDiff/difftime(start_t, end_t);
 			prevErrorValue = errorValue;
 		}
+		
 		// Determines the new motor speeds to alter direction
 		errorTot += errorValue;
 		right = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
 		left = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
-		if(errorValue > 0)
-		{
-			printf(" --- Right\n");
-		}
-		else if(errorValue < 0)
-		{
-			printf(" --- Left\n");
-		}
-		else
-		{
-			printf(" --- Centre\n");
-		}
+		
+		
 		
 		if(pixelCount >= 18)
 		{
@@ -99,13 +110,13 @@ int main()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed/2);
-				Sleep(0, 50000);
+				Sleep(1, 00000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
 				set_motor(1, motorSpeed/2);
 				set_motor(2, motorSpeed);
-				Sleep(0, 50000);
+				Sleep(1, 00000);
 			}
 		}
 		else if(!lineFound)
