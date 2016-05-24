@@ -25,7 +25,7 @@ int main()
 	int left; 
 	int right;
 	int motorSpeed = 50;
-	double kp = 1.5; //P value in PD controller
+	double kp = 3; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
