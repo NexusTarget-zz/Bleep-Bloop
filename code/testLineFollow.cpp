@@ -26,7 +26,7 @@ int main()
 	int right;
 	int motorSpeed = 50;
 	double kp = 3; //P value in PD controller
-	double kd = 0.001; //D value in PD controller
+	double kd = 0.0005; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
 	double timeStep = 0.1; //The time period used for calculating kp
@@ -76,7 +76,10 @@ int main()
 			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-		
+		// Determines the new motor speeds to alter direction
+		errorTot += errorValue;
+		right = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
+		left = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
 		if(errorValue > 0)
 		{
 			printf(" --- Right\n");
@@ -94,14 +97,14 @@ int main()
 		{
 			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
-				set_motor(1, motorSpeed);
-				set_motor(2, motorSpeed/4);
+				set_motor(1, right);
+				set_motor(2, left);
 				Sleep(0, 50000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
-				set_motor(1, motorSpeed/4);
-				set_motor(2, motorSpeed);
+				set_motor(1, right);
+				set_motor(2, left);
 				Sleep(0, 50000);
 			}
 		}
@@ -120,10 +123,7 @@ int main()
 		}
 		else
 		{
-			// Determines the new motor speeds to alter direction
-			errorTot += errorValue;
-			right = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
-			left = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
+			
 			// Changes the motor speeds to the predetermined values
 			set_motor(1, right);
 			set_motor(2, left);
