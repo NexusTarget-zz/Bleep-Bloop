@@ -60,7 +60,7 @@ int main()
 				printf("0");
 			}
 		}
-		printf("\n");
+		
 		if(pixelCount == 0)
 		{
 			pixelCount = 1;
@@ -96,7 +96,7 @@ int main()
 		else
 		{
 
-			errorValue = errorValue/sampleSize; //Gets average of error
+			printf(" --- %d\n", errorValue);
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
 			left = 50 - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
