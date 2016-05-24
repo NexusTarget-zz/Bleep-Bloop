@@ -60,7 +60,7 @@ int main()
 				printf("0");
 			}
 		}
-		printf("\n")
+		printf("\n");
 		if(pixelCount == 0)
 		{
 			pixelCount = 1;
