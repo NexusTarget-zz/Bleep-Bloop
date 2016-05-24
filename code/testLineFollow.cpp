@@ -70,7 +70,7 @@ int main()
 		time(&start_t); //Finds the current time
 		if (difftime(end_t, start_t) > timeStep)
 		{
-			printf("\ngat eim\n")
+			printf("\ngat eim\n");
 			end_t = start_t;
 			//Formulas used to calculate the dErrorValue
 			double errorDiff = errorValue - prevErrorValue;
