@@ -24,11 +24,12 @@ int main()
 	float errorTot = 0;
 	int left; 
 	int right;
+	int motorSpeed = 50;
 	double kp = 1.5; //P value in PD controller
 	double kd = 0; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
-	double timeStep = 0.2; //The time period used for calculating kp
+	double timeStep = 1; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound = false;
@@ -69,7 +70,7 @@ int main()
 		time(&start_t); //Finds the current time
 		if (difftime(end_t, start_t) > timeStep)
 		{
-			
+			printf("\ngat eim\n")
 			end_t = start_t;
 			//Formulas used to calculate the dErrorValue
 			double errorDiff = errorValue - prevErrorValue;
@@ -77,7 +78,7 @@ int main()
 			prevErrorValue = errorValue;
 		}
 		
-		if(errorValue >= 0)
+		if(errorValue > 0)
 		{
 			printf(" --- Right\n");
 		}
@@ -93,36 +94,36 @@ int main()
 			/**	set_motor(1, -80); 
 				set_motor(2, -80);
 				Sleep(0, 5000); */
-				set_motor(1, 40);
-				set_motor(2, -40);
+				set_motor(1, motorSpeed);
+				set_motor(2, -1*motorSpeed);
 			}else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
 			/**	set_motor(1, -80);
 				set_motor(2, -80);
 				Sleep(0, 5000); */
-				set_motor(1, -40);
-				set_motor(2, 40);
+				set_motor(1, -1*motorSpeed);
+				set_motor(2, motorSpeed);
 			}
 		}
 		else if(!lineFound)
 		{
-			if(prevErrorValue >= 0)
+			if(prevErrorValue > 0)
 			{
-				set_motor(1, 40);
-				set_motor(2, -40);
+				set_motor(1, motorSpeed);
+				set_motor(2, -1*motorSpeed);
 			}
 			else if(prevErrorValue < 0)
 			{
-				set_motor(1, -40);
-				set_motor(2, 40);
+				set_motor(1, -1*motorSpeed);
+				set_motor(2, motorSpeed);
 			}
 		}
 		else
 		{
 			// Determines the new motor speeds to alter direction
 			errorTot += errorValue;
-			left = 50 - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
-			right = 50 + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
+			left = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
+			right = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
 			// Changes the motor speeds to the predetermined values
 			set_motor(1, left);
 			set_motor(2, right);
