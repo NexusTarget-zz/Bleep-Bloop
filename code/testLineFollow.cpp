@@ -49,7 +49,7 @@ int main()
 
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
-			if (pLine[i]>127)
+			if (pLine[i]>80)
 			{
 				pixelCount++;
 				errorValue += i-sampleSize/2;
@@ -70,7 +70,6 @@ int main()
 		time(&start_t); //Finds the current time
 		if (difftime(start_t, end_t) > timeStep)
 		{
-			printf("\ngat eim\n");
 			end_t = start_t;
 			//Formulas used to calculate the dErrorValue
 			double errorDiff = errorValue - prevErrorValue;
