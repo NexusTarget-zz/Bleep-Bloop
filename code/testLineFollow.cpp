@@ -68,7 +68,7 @@ int main()
 		}
 		errorValue = errorValue/pixelCount;
 		time(&start_t); //Finds the current time
-		if (difftime(end_t, start_t) > timeStep)
+		if (difftime(start_t, end_t) > timeStep)
 		{
 			printf("\ngat eim\n");
 			end_t = start_t;
@@ -85,6 +85,10 @@ int main()
 		else if(errorValue < 0)
 		{
 			printf(" --- Left\n");
+		}
+		else
+		{
+			printf(" --- Centre\n");
 		}
 		
 		if(pixelCount >= 16)
