@@ -97,14 +97,14 @@ int main()
 		{
 			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
-				set_motor(1, right);
-				set_motor(2, left);
+				set_motor(1, motorSpeed);
+				set_motor(2, motorSpeed/2);
 				Sleep(0, 50000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
-				set_motor(1, right);
-				set_motor(2, left);
+				set_motor(1, motorSpeed/2);
+				set_motor(2, motorSpeed);
 				Sleep(0, 50000);
 			}
 		}
