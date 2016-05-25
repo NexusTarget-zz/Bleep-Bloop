@@ -2,13 +2,13 @@
 #include <time.h>
 
 //extern "C" int InitHardware(); //used this on assignment 5??
-extern "C" int test(int d_lev);
+extern "C" int init(int d_lev);
 extern "C" int ReadAnalog(int ch_adc);
 extern "C" int Sleep(int sec, int usec);
 
 int main(){
   
- test(0);
+ init(0);
   //InitHardware();
   int adc_reading;
   while(true)
