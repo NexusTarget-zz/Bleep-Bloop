@@ -99,7 +99,9 @@ int main()
 		{
 			if(pixelCount >= 30)
 			{
-				Sleep(1, 000000);
+				set_motor(1, motorSpeed);
+				set_motor(2, motorSpeed);
+				Sleep(0, 500000)
 				while(!centered)
 				{
 					int tLine[32];
@@ -130,8 +132,12 @@ int main()
 			}
 			else if(errorValue < 0) //if line not found or left 90deg corner/T junction detected turn left
 			{
+				set_motor(1, motorSpeed);
+				set_motor(2, motorSpeed);
+				Sleep(0, 500000)
 				while(!centered)
 				{
+					
 					int tLine[32];
 					take_picture();
 					float tErrorValue = 0;
@@ -160,6 +166,9 @@ int main()
 			}
 			else if(errorValue > 0) 	//if right hand 90deg corner found, turn right
 			{
+				set_motor(1, motorSpeed);
+				set_motor(2, motorSpeed);
+				Sleep(0, 500000)
 				while(!centered)
 				{
 					int tLine[32];
