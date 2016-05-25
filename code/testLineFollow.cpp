@@ -32,13 +32,15 @@ int main()
 	double timeStep = 0.1; //The time period used for calculating kp
 	time_t start_t; //The start point for calculating a time difference
 	time_t end_t = 0; //End point for calculating time difference
-	bool lineFound = false;
+	bool lineFound;
+	bool centered;
 	while(true) //This creates a never ending loop
 	{
 		pTot = 0;
 		pixelCount = 0;
 		errorValue = 0;
 		lineFound = false;
+		centered = false;
 		take_picture(); //Self explanatory
 
 		for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
@@ -98,7 +100,32 @@ int main()
 			set_motor(1, 0);
 			set_motor(2, 0);
 			Sleep(1, 000000);
-			if(errorValue < 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
+			if(pixelCount => 30)
+			{
+				while(!centered)
+				{
+					int tLine[32];
+					take_picture();
+					tErrorValue = 0;
+					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
+					{
+						tLine[i] = get_pixel(i*10,120,3);
+					}
+			
+					for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
+					{
+						if (tLine[i]>95)
+						{
+							tErrorValue += i-sampleSize/2;
+						}
+					}
+					if(tErrorValue == 0)
+					{
+						centered = true;
+					}
+				}
+			}
+			else if(errorValue < 0) //if line not found or left 90deg corner/T junction detected turn left
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, 0);
