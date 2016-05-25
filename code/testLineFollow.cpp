@@ -106,29 +106,33 @@ int main()
 		
 		if(pixelCount >= 18)
 		{
+			set_motor(1, 0);
+			set_motor(2, 0);
 			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
 				set_motor(1, motorSpeed);
-				set_motor(2, motorSpeed/2);
+				set_motor(2, 0);
 				Sleep(1, 00000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
-				set_motor(1, motorSpeed/2);
+				set_motor(1, 0);
 				set_motor(2, motorSpeed);
 				Sleep(1, 00000);
 			}
 		}
 		else if(!lineFound)
 		{
+			set_motor(1, 0);
+			set_motor(2, 0);
 			if(prevErrorValue > 0)
 			{
 				set_motor(1, motorSpeed);
-				set_motor(2, -1*motorSpeed);
+				set_motor(2, 0);
 			}
 			else if(prevErrorValue < 0)
 			{
-				set_motor(1, -1*motorSpeed);
+				set_motor(1, 0);
 				set_motor(2, motorSpeed);
 			}
 		}
