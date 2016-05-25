@@ -149,8 +149,8 @@ int main()
 							tErrorValue = i-sampleSize/2;
 						}
 					}
-					set_motor(1, -1*motorSpeed);
-					set_motor(2, motorSpeed);
+					set_motor(1, motorSpeed);
+					set_motor(2, -1*motorSpeed);
 					if(tErrorValue == 0 && tPixelCount >=4)
 					{
 						centered = true;
@@ -179,8 +179,8 @@ int main()
 							tErrorValue = i-sampleSize/2;
 						}
 					}
-					set_motor(1, motorSpeed);
-					set_motor(2, -1*motorSpeed);
+					set_motor(1, -1*motorSpeed);
+					set_motor(2, motorSpeed);
 					if(tErrorValue == 0 && tPixelCount >=4)
 					{
 						centered = true;
