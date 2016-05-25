@@ -149,7 +149,7 @@ int main()
 							tErrorValue = i-sampleSize/2;
 						}
 					}
-					set_motor(1, -1*mototSpeed);
+					set_motor(1, -1*motorSpeed);
 					set_motor(2, motorSpeed);
 					if(tErrorValue == 0 && tPixelCount >=4)
 					{
