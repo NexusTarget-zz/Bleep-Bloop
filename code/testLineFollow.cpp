@@ -97,11 +97,9 @@ int main()
 		
 		if(pixelCount >= 18)
 		{
-			set_motor(1, 0);
-			set_motor(2, 0);
-			Sleep(1, 000000);
 			if(pixelCount >= 30)
 			{
+				Sleep(1, 000000);
 				while(!centered)
 				{
 					int tLine[32];
@@ -143,8 +141,6 @@ int main()
 		}
 		else if(!lineFound)
 		{
-			set_motor(1, 0);
-			set_motor(2, 0);
 			if(prevErrorValue >= 0)
 			{
 				set_motor(1, -1*motorSpeed);
