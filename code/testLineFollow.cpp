@@ -115,7 +115,7 @@ int main()
 		{
 			set_motor(1, 0);
 			set_motor(2, 0);
-			if(prevErrorValue => 0)
+			if(prevErrorValue >= 0)
 			{
 				set_motor(1, -1*motorSpeed);
 				set_motor(2, motorSpeed);
