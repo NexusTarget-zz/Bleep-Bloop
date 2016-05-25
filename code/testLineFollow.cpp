@@ -106,8 +106,8 @@ int main()
 		
 		if(pixelCount >= 18)
 		{
-			set_motor(1, 0);
-			set_motor(2, 0);
+			//set_motor(1, 0);
+			//set_motor(2, 0);
 			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
 				set_motor(1, motorSpeed);
