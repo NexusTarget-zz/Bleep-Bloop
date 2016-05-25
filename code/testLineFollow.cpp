@@ -107,6 +107,7 @@ int main()
 					int tLine[32];
 					take_picture();
 					float tErrorValue = 0;
+					int tPixelCount = 0;
 					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
 					{
 						tLine[i] = get_pixel(i*10,120,3);
@@ -116,12 +117,13 @@ int main()
 					{
 						if (tLine[i]>95)
 						{
+							tPixelCount++;
 							tErrorValue += i-sampleSize/2;
 						}
 					}
 					set_motor(1, motorSpeed);
 					set_motor(2, 0);
-					if(tErrorValue == 0)
+					if(tErrorValue == 0 && tPixelCount >=4)
 					{
 						centered = true;
 					}
