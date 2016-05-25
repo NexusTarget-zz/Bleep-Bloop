@@ -118,7 +118,7 @@ int main()
 						if (tLine[i]>95)
 						{
 							tPixelCount++;
-							tErrorValue += i-sampleSize/2;
+							tErrorValue = i-sampleSize/2;
 						}
 					}
 					set_motor(1, motorSpeed);
