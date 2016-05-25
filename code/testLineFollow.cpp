@@ -130,13 +130,63 @@ int main()
 			}
 			else if(errorValue < 0) //if line not found or left 90deg corner/T junction detected turn left
 			{
-				set_motor(1, motorSpeed);
-				set_motor(2, 0);
+				while(!centered)
+				{
+					int tLine[32];
+					take_picture();
+					float tErrorValue = 0;
+					int tPixelCount = 0;
+					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
+					{
+						tLine[i] = get_pixel(i*10,120,3);
+					}
+			
+					for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
+					{
+						if (tLine[i]>95)
+						{
+							tPixelCount++;
+							tErrorValue = i-sampleSize/2;
+						}
+					}
+					set_motor(1, motorSpeed);
+					set_motor(2, 0);
+					if(tErrorValue == 0 && tPixelCount >=4)
+					{
+						centered = true;
+					}
+					
+				}
 			}
 			else if(errorValue > 0) 	//if right hand 90deg corner found, turn right
 			{
-				set_motor(1, 0);
-				set_motor(2, motorSpeed);
+				while(!centered)
+				{
+					int tLine[32];
+					take_picture();
+					float tErrorValue = 0;
+					int tPixelCount = 0;
+					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
+					{
+						tLine[i] = get_pixel(i*10,120,3);
+					}
+			
+					for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
+					{
+						if (tLine[i]>95)
+						{
+							tPixelCount++;
+							tErrorValue = i-sampleSize/2;
+						}
+					}
+					set_motor(1, 0);
+					set_motor(2, motorSpeed);
+					if(tErrorValue == 0 && tPixelCount >=4)
+					{
+						centered = true;
+					}
+					
+				}
 			}
 		}
 		else if(!lineFound)
