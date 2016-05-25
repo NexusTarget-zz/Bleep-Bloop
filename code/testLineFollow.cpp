@@ -107,7 +107,7 @@ int main()
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
 				set_motor(1, 0);
-				set_motor(2, mototrSpeed);
+				set_motor(2, motorSpeed);
 				Sleep(1, 500000);
 			}
 		}
