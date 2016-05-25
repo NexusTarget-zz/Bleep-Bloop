@@ -100,13 +100,13 @@ int main()
 			set_motor(1, 0);
 			set_motor(2, 0);
 			Sleep(1, 000000);
-			if(pixelCount => 30)
+			if(pixelCount >= 30)
 			{
 				while(!centered)
 				{
 					int tLine[32];
 					take_picture();
-					tErrorValue = 0;
+					float tErrorValue = 0;
 					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
 					{
 						tLine[i] = get_pixel(i*10,120,3);
