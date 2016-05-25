@@ -101,13 +101,13 @@ int main()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, 0);
-				Sleep(0, 50000);
+				Sleep(1, 00000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
 				set_motor(1, right);
 				set_motor(2, left);
-				Sleep(0, 50000);
+				Sleep(1, 00000);
 			}
 		}
 		else if(!lineFound)
