@@ -101,7 +101,7 @@ int main()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 500000);
+				Sleep(0, 200000);
 				while(!centered)
 				{
 					int tLine[32];
@@ -134,7 +134,7 @@ int main()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 500000);
+				Sleep(0, 200000);
 				while(!centered)
 				{
 					
@@ -168,7 +168,7 @@ int main()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 500000);
+				Sleep(0, 200000);
 				while(!centered)
 				{
 					int tLine[32];
