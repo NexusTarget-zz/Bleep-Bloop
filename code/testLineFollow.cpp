@@ -64,75 +64,60 @@ int main()
 		
 		if(pixelCount == 0)
 		{
-			errorValue = 0;
-			printf(" --- Lost\n");
+			pixelCount = 1;
 		}
-		else
-		{
-			errorValue = errorValue/pixelCount;
-			
-			if(errorValue > 0)
-			{
-				printf(" --- Right\n");
-			}
-			else if(errorValue < 0)
-			{
-				printf(" --- Left\n");
-			}
-			else
-			{
-				printf(" --- Centre\n");
-			}
-		}
-		
-		
-		
+		errorValue = errorValue/pixelCount;
 		time(&start_t); //Finds the current time
 		if (difftime(start_t, end_t) > timeStep)
 		{
 			end_t = start_t;
 			//Formulas used to calculate the dErrorValue
 			double errorDiff = errorValue - prevErrorValue;
-			dErrorValue = (float)errorDiff/difftime(start_t, end_t);
+			dErrorValue = (float)errorDiff/timeStep;
 			prevErrorValue = errorValue;
 		}
-		
 		// Determines the new motor speeds to alter direction
 		errorTot += errorValue;
 		right = motorSpeed - (errorValue * kp) - (dErrorValue * kd) - (errorTot * ki);
 		left = motorSpeed + (errorValue * kp) + (dErrorValue * kd) + (errorTot * ki);
-		
-		
+		if(errorValue > 0)
+		{
+			printf(" --- Right\n");
+		}
+		else if(errorValue < 0)
+		{
+			printf(" --- Left\n");
+		}
+		else
+		{
+			printf(" --- Centre\n");
+		}
 		
 		if(pixelCount >= 18)
 		{
-			//set_motor(1, 0);
-			//set_motor(2, 0);
 			if(errorValue >= 0 || pixelCount == 32) //if line not found or left 90deg corner/T junction detected turn left
 			{
-				set_motor(1, motorSpeed);
-				set_motor(2, 0);
-				Sleep(1, 00000);
+				set_motor(1, right);
+				set_motor(2, left);
+				Sleep(0, 50000);
 			}
 			else if(errorValue < 0) 	//if right hand 90deg corner found, turn right
 			{
-				set_motor(1, 0);
-				set_motor(2, motorSpeed);
-				Sleep(1, 00000);
+				set_motor(1, right);
+				set_motor(2, left);
+				Sleep(0, 50000);
 			}
 		}
 		else if(!lineFound)
 		{
-			set_motor(1, 0);
-			set_motor(2, 0);
 			if(prevErrorValue > 0)
 			{
 				set_motor(1, motorSpeed);
-				set_motor(2, 0);
+				set_motor(2, -1*motorSpeed);
 			}
 			else if(prevErrorValue < 0)
 			{
-				set_motor(1, 0);
+				set_motor(1, -1*motorSpeed);
 				set_motor(2, motorSpeed);
 			}
 		}
