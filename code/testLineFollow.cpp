@@ -115,18 +115,15 @@ int main()
 		{
 			set_motor(1, 0);
 			set_motor(2, 0);
-			Sleep(1, 000000);
 			if(prevErrorValue > 0)
-			{
-				set_motor(1, motorSpeed);
-				set_motor(2, -1*motorSpeed);
-				Sleep(1, 500000);
-			}
-			else if(prevErrorValue < 0)
 			{
 				set_motor(1, -1*motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(1, 500000);
+			}
+			else if(prevErrorValue < 0)
+			{
+				set_motor(1, motorSpeed);
+				set_motor(2, -1*motorSpeed);
 			}
 		}
 		else
