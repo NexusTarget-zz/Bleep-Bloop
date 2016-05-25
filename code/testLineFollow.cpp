@@ -119,10 +119,13 @@ int main()
 							tErrorValue += i-sampleSize/2;
 						}
 					}
+					set_motor(1, motorSpeed);
+					set_motor(2, 0);
 					if(tErrorValue == 0)
 					{
 						centered = true;
 					}
+					
 				}
 			}
 			else if(errorValue < 0) //if line not found or left 90deg corner/T junction detected turn left
