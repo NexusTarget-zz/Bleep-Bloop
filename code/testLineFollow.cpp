@@ -113,17 +113,9 @@ int main()
 						tLine[i] = get_pixel(i*10,120,3);
 					}
 			
-					for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
-					{
-						if (tLine[i]>95)
-						{
-							tPixelCount++;
-							tErrorValue = i-sampleSize/2;
-						}
-					}
 					set_motor(1, motorSpeed);
 					set_motor(2, -1*motorSpeed);
-					if(tErrorValue == 0 && tPixelCount >=4)
+					if(tLine[16]>95)
 					{
 						centered = true;
 					}
@@ -146,18 +138,9 @@ int main()
 					{
 						tLine[i] = get_pixel(i*10,120,3);
 					}
-			
-					for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
-					{
-						if (tLine[i]>95)
-						{
-							tPixelCount++;
-							tErrorValue = i-sampleSize/2;
-						}
-					}
 					set_motor(1, motorSpeed);
 					set_motor(2, -1*motorSpeed);
-					if(tErrorValue == 0 && tPixelCount >=4)
+					if(tLine[16]>95)
 					{
 						centered = true;
 					}
@@ -179,18 +162,9 @@ int main()
 					{
 						tLine[i] = get_pixel(i*10,120,3);
 					}
-			
-					for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
-					{
-						if (tLine[i]>95)
-						{
-							tPixelCount++;
-							tErrorValue = i-sampleSize/2;
-						}
-					}
 					set_motor(1, -1*motorSpeed);
 					set_motor(2, motorSpeed);
-					if(tErrorValue == 0 && tPixelCount >=4)
+					if(tLine[16]>95)
 					{
 						centered = true;
 					}
