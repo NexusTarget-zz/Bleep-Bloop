@@ -170,13 +170,41 @@ int main()
 		{
 			if(prevErrorValue >= 0)
 			{
-				set_motor(1, -1*motorSpeed);
-				set_motor(2, motorSpeed);
+				while(!centered)
+				{
+					int tLine[32];
+					take_picture();
+					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
+					{
+						tLine[i] = get_pixel(i*10,120,3);
+					}
+					set_motor(1, -1*motorSpeed);
+					set_motor(2, motorSpeed);
+					if(tLine[16]>95)
+					{
+						centered = true;
+					}
+					
+				}
 			}
 			else if(prevErrorValue < 0)
 			{
-				set_motor(1, motorSpeed);
-				set_motor(2, -1*motorSpeed);
+				while(!centered)
+				{
+					int tLine[32];
+					take_picture();
+					for (int i = 0; i < sampleSize; i++) //Finds brightness of each required pixel	
+					{
+						tLine[i] = get_pixel(i*10,120,3);
+					}
+					set_motor(1, motorSpeed);
+					set_motor(2, -1*motorSpeed);
+					if(tLine[16]>95)
+					{
+						centered = true;
+					}
+					
+				}
 			}
 		}
 		else
