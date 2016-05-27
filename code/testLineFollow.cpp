@@ -34,6 +34,7 @@ int main()
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound;
 	bool centered;
+	int pixelThresh = 90;
 	while(true) //This creates a never ending loop
 	{
 		pTot = 0;
@@ -51,7 +52,7 @@ int main()
 
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
 		{
-			if (pLine[i]>95)
+			if (pLine[i]>pixelThresh)
 			{
 				pixelCount++;
 				errorValue += i-sampleSize/2;
@@ -113,7 +114,7 @@ int main()
 			
 					set_motor(1, motorSpeed);
 					set_motor(2, -1*motorSpeed);
-					if(tLine[16]>95)
+					if(tLine[16]>pexelThresh)
 					{
 						centered = true;
 					}
@@ -136,7 +137,7 @@ int main()
 					}
 					set_motor(1, motorSpeed);
 					set_motor(2, -1*motorSpeed);
-					if(tLine[16]>95)
+					if(tLine[16]>pixelThresh)
 					{
 						centered = true;
 					}
@@ -158,7 +159,7 @@ int main()
 					}
 					set_motor(1, -1*motorSpeed);
 					set_motor(2, motorSpeed);
-					if(tLine[16]>95)
+					if(tLine[16]>pixelThresh)
 					{
 						centered = true;
 					}
