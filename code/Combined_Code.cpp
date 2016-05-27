@@ -36,14 +36,13 @@ int main ()
 	bool centered;
 	int pixelThresh = 120;
 	char message[24];
-	string response;
 	
 	
 	init(0);
 	connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
 	send_to_server("Please"); //sends please to the connected server
 	receive_from_server(message); //receives message from the connected server
-	String response = String(message);
+	char* response = String(message);
 	send_to_server(response);
 	while(true) //This creates a never ending loop
 	{
