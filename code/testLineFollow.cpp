@@ -25,7 +25,7 @@ int main()
 	int left; 
 	int right;
 	int motorSpeed = 50;
-	double kp = 2; //P value in PD controller
+	double kp = 3; //P value in PD controller
 	double kd = 0.0000; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
@@ -34,7 +34,7 @@ int main()
 	time_t end_t = 0; //End point for calculating time difference
 	bool lineFound;
 	bool centered;
-	int pixelThresh = 110;
+	int pixelThresh = 105;
 	while(true) //This creates a never ending loop
 	{
 		pTot = 0;
