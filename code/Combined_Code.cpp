@@ -49,7 +49,7 @@ int main ()
 	send_to_server(response);
 	while(true) //This creates a never ending loop
 	{
-		pTot = 0;
+		pTot = 0; 
 		pixelCount = 0;
 		errorValue = 0;
 		lineFound = false;
@@ -63,7 +63,7 @@ int main ()
 		}
 
 		for (int i = 0; i < sampleSize; i++) //If pixel is brighter than average, negative number means line is to the left, positive if line is to the right
-		{
+		{ //printf statements used to show a graphical representation of how the camera detects the line
 			if (pLine[i]>pixelThresh)
 			{
 				pixelCount++;
