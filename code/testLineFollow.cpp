@@ -114,7 +114,7 @@ int main()
 			
 					set_motor(1, motorSpeed);
 					set_motor(2, -1*motorSpeed);
-					if(tLine[16]>pexelThresh)
+					if(tLine[16]>pixelThresh)
 					{
 						centered = true;
 					}
