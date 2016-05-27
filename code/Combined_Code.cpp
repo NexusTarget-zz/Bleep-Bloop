@@ -42,8 +42,8 @@ int main ()
 	connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
 	send_to_server("Please"); //sends please to the connected server
 	receive_from_server(message); //receives message from the connected server
-	char* response = "0";
-	send_to_server(message + response);
+	char* response = message;
+	send_to_server(response);
 	while(true) //This creates a never ending loop
 	{
 		pTot = 0;
