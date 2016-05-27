@@ -36,7 +36,7 @@ int main ()
 	bool centered;
 	int pixelThresh = 120;
 	char message[24];
-	String response;
+	string response;
 	
 	
 	init(0);
