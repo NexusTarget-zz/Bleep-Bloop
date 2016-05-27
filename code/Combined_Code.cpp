@@ -36,7 +36,10 @@ int main ()
 	bool centered;
 	int pixelThresh = 120;
 	char message[24];
-	
+	for(int i = 0; i < 24; i++)
+	{
+		message[i] = 0;
+	}
 	
 	init(0);
 	connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
