@@ -7,7 +7,11 @@ extern "C" int Sleep(int sec, int usec);
 
 int main(){
   
+<<<<<<< HEAD
  init(0);
+=======
+  init(0);
+>>>>>>> ef328dd1f8c91f4fe799d566f8afcb95a111f82a
   int adc_reading;
   while(true)
     {
