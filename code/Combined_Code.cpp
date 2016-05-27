@@ -49,7 +49,7 @@ int main ()
 	send_to_server(response);
 	while(true) //This creates a never ending loop
 	{
-		pTot = 0; 
+		pTot = 0; //Initilises variables
 		pixelCount = 0;
 		errorValue = 0;
 		lineFound = false;
