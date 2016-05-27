@@ -46,16 +46,31 @@ rounding edges. These modifications will help to increase maneuverability, and a
 AV won't require as much tuning. We believe this will be the final major design change for the chassis.
 As for next week, the design team hopes to have the Pi installed in the rev 4 chassis so that the coders can tune the PIDto suit.
 We will also revise the design and make holes for the IR sensors to mount to and cable management holes.
-
 The code team this week got a lot done. They combined all of the separate parts to the code into one file with functions that
 can be called when needed. They also added intersection handling, with code for recognising when a junction is reached. They tried
 to implement static turning functions, but realised that this would not be reliable as the robot would turn different amounts 
 depending on the battery charge level. The current method of handling intersections is all combined in the line following function.
 When it recognises that it has lost the line, it pivots to the left until the line is found again. This seems to work well, apart
 from when the robot loses the line when it isn't meant to, it occassionally does a 180 and returns to the start of the maze.
+Once these revisions were done, they  re-tuned the PID to the new rev 2 chassis. When tuning the AV the team found that the AV was 
+getting bad oscillations due to the error value being multiplied by ten. They managed to get the robot running fairly
+well, but it will have to be re-tuned with the new chassis as it is much smaller. In the next week the code team hopes to be able 
+to tune the PID for the rev 4 chassis and then to implement the code for T-intersections without any failures.
 
-Once these revisions were done, they first re-tuned the PID to the new rev 2 chassis. When tuning the AV we found 
-that we were getting bad oscillations due to the error value being multiplied by ten. They managed to get the robot running fairly
-well, but it will have to be re-tuned with the new chassis as it is much smaller. In the next week the code team hopes to be able to 
-tune the PID for the rev 4 chassis and then to implement the code for T-intersections without any failures.
-
+<ul>27/5/16</ul>
+This week was a particularly stressful one for the coding team, with our AV being marked in 9 days, we had some major issues, a 
+lot of which was due to such drastic design changes from the hardware revisions last week. The main issue issue was that our AV 
+reduced so drastically in size and weight, this caused our current PID tuning to be mostly useless, having to retune it completely 
+from scratch. After some major head scratching we were able to correct this. Part of what made this process so difficult was the 
+fact that our Git repository was disorganised, this meant some pretty vital code was lost due to being misplaced and us being
+unable to find it. The disorganisation was the first issue rectified this week. As at friday our code is able to get our AV to 
+the start of the walled maze again, and do so reliably. We then merged the gate opening code and the line follow code in one file 
+and did a retest.  By tuesday we hope to have the walled maze code complete.
+ As for the design team, the cable management and the mounting of the IR sensors to the sides of the base were the first point 
+ of priority. Whilst krishna and antonio worked on that, cicero worked towards designing the outer shell for our AV. Over the week
+ it became quite apparent that our mounting method would not work (from observing other teams), this is due to the fact that they
+ were 90° from each other.  If the AV was slightly off when heading in a straight direction, when the PID tried to correct the AV,
+ it would tend to over correct and lose control. As a group we noticed that the teams that had their IR sensors angled between 
+ the front and sides did not seem to have this problem. The design team quickly rethought a mounting solution for our AV, got it 
+ printed and the IRS’s re-installed. As at friday the outer shell is mostly installed, a hole needed to be cut so we had access to
+ the usb ports and rear I/O. Now they just have one more piece to print for the front which will be done monday evening.
