@@ -64,8 +64,8 @@ int main ()
 	  	int frontWall = 550; //threshold for if wall is detected in front of the robot
 	  	int leftWall = 345; //target distance for wall to left
 	  	int rightWall = 345; //target distance if wall to right
-	  	//double kp = 0.1;
-	 	//double errorValue = 0;
+	  	double kp = 0.1;
+	 	double errorValue = 0;
 		//int motorSpeed = 50;
 		//double left; //amount to adjust each motor speed
 		//double right;
@@ -73,6 +73,7 @@ int main ()
 		bool intersection2 = false;
 
         while(true){
+        	
         	frontIR = read_analog(0); //Reads Front IR Sensor and prints to the console
                 printf("Front: %d", frontIR);
 
