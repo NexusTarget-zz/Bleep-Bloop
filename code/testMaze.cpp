@@ -9,20 +9,20 @@ extern "C" int set_motor(int motor, int speed);
 int main(){
 
 init(0);
-  int frontIR; //current reading for each IR sensor
-  int leftIR;
-  int rightIR;
-  int frontWall = 550; //threshold for if wall is detected in front of the robot
-  int leftWall = 345; //target distance for wall to left
-  int rightWall = 345; //target distance if wall to right
-  double kp = 0.1;
- double errorValue = 0;
-  int motorSpeed = 50;
-  double left; //amount to adjust each motor speed
-  double right;
+	int frontIR; //current reading for each IR sensor
+	int leftIR;
+  	int rightIR;
+  	int frontWall = 550; //threshold for if wall is detected in front of the robot
+  	int leftWall = 345; //target distance for wall to left
+  	int rightWall = 345; //target distance if wall to right
+  	double kp = 0.1;
+ 	double errorValue = 0;
+	int motorSpeed = 50;
+	double left; //amount to adjust each motor speed
+	double right;
 
         while(true){
-                frontIR = read_analog(0); //reads IR sensors and prints to the console
+        	frontIR = read_analog(0); //reads IR sensors and prints to the console
                 printf("Front: %d", frontIR);
 
                 leftIR = read_analog(1);
@@ -35,10 +35,9 @@ init(0);
                         printf("wall in front of robot detected \n");
                         if((rightIR < rightWall) && (leftIR < leftWall)){ //turn right if there is no wa$
                                 printf("no wall left all right \n");
-                                while(rightIR < rightWall){
-                                        set_motor(1, -1.5  * motorSpeed); //tune 0.43 - got it from calc$
-                                        set_motor(2, motorSpeed);
-                                }
+                	        set_motor(1, -1.5  * motorSpeed); //tune 0.43 - got it from calc$
+                                set_motor(2, motorSpeed);
+                                
         /*      }else if((rightIR < rightWall) && (leftIR > leftWall){
                         printf("no wall to right \n");
                         set_motor(1, -1 * motorSpeed);
