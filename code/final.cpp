@@ -59,7 +59,7 @@ int main ()
 	  	leftIR = read_analog(1); // Reads Left IR Sensor 
 	  	rightIR = read_analog(2);// Reads Right IR Sensor 
 		delay++;
-		if(delay>40 && (leftIR > leftWall || rightIR > rightWall){
+		if(delay>40 && (leftIR > leftWall || rightIR > rightWall)){
 	
 	  	int frontWall = 550; //threshold for if wall is detected in front of the robot
 	  	int leftWall = 345; //target distance for wall to left
