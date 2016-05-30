@@ -21,6 +21,7 @@ init(0);
 	double left; //amount to adjust each motor speed
 	double right;
 	bool intersection = false;
+	bool intersection2 = false;
 
         while(true){
         	frontIR = read_analog(0); //reads IR sensors and prints to the console
@@ -60,7 +61,15 @@ init(0);
                 	set_motor(1, 0.3* motorSpeed);
                         set_motor(2, motorSpeed)
                         if(rightIR > rightWall){
+                        	intersection2 = true;
                         	intersection = false;
+                        }
+                }
+                if(intersection2){
+                	set_motor(1, 0.3* motorSpeed);
+                        set_motor(2, motorSpeed)
+                        if(leftIR > leftWall){
+                        	intersection2 = false;
                         }
                 }
                         
