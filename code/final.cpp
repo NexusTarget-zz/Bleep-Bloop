@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <time.h>
 
+extern "C" int read_analog(int ch_adc);
 extern "C" int set_motor(int motor, int speed);
 extern "C" int init(int d_lev);
 extern "C" int take_picture();
@@ -15,7 +16,7 @@ extern "C" int receive_from_server(char message[24]);
 
 int main ()
 {
-int delay = 0;
+	int delay = 0;
 	int pLine[32]; //Creates an array to store pixel values
 	int sampleSize = sizeof(pLine)/sizeof(int); //A set variable of the arrays length
 	int pTot;
@@ -50,25 +51,26 @@ int delay = 0;
 	send_to_server(response);
 	while(true) //This creates a never ending loop
 	{
-  int leftWall = 345; //target distance for wall to left
-  int rightWall = 345; //target distance if wall to right
-  leftIR = read_analog(1); // Reads Left IR Sensor 
-  rightIR = read_analog(2);// Reads Right IR Sensor 
-	int delay++;
-	if(delay>40 && (leftIR > leftWall || rightIR > rightWall){
-	 int frontIR; //current reading for each IR sensor
-	int leftIR;
-  	int rightIR;
-  	int frontWall = 550; //threshold for if wall is detected in front of the robot
-  	int leftWall = 345; //target distance for wall to left
-  	int rightWall = 345; //target distance if wall to right
-  	double kp = 0.1;
- 	double errorValue = 0;
-	int motorSpeed = 50;
-	double left; //amount to adjust each motor speed
-	double right;
-	bool intersection = false;
-	bool intersection2 = false;
+		int frontIR; //current reading for each IR sensor
+		int leftIR;
+	  	int rightIR;	
+  		int leftWall = 345; //target distance for wall to left
+	  	int rightWall = 345; //target distance if wall to right
+	  	leftIR = read_analog(1); // Reads Left IR Sensor 
+	  	rightIR = read_analog(2);// Reads Right IR Sensor 
+		delay++;
+		if(delay>40 && (leftIR > leftWall || rightIR > rightWall){
+	
+	  	int frontWall = 550; //threshold for if wall is detected in front of the robot
+	  	int leftWall = 345; //target distance for wall to left
+	  	int rightWall = 345; //target distance if wall to right
+	  	//double kp = 0.1;
+	 	//double errorValue = 0;
+		//int motorSpeed = 50;
+		//double left; //amount to adjust each motor speed
+		//double right;
+		bool intersection = false;
+		bool intersection2 = false;
 
         while(true){
         	frontIR = read_analog(0); //Reads Front IR Sensor and prints to the console
@@ -107,7 +109,7 @@ int delay = 0;
                 if(intersection){
                 	printf("intersection 1 started \n");
                 	set_motor(1, 0.3* motorSpeed);
-                        set_motor(2, motorSpeed)
+                        set_motor(2, motorSpeed);
                         if(rightIR > rightWall){
                         	intersection2 = true;
                         	intersection = false;
@@ -117,7 +119,7 @@ int delay = 0;
                 if(intersection2){
                 	printf("intersection 2 started \n");
                 	set_motor(1, 0.3* motorSpeed);
-                        set_motor(2, motorSpeed)
+                        set_motor(2, motorSpeed);
                         if(leftIR > leftWall){
                         	intersection2 = false;
                         	printf("intersection 2 ended \n");
