@@ -11,10 +11,10 @@ init(0);
   int frontIR; //current reading for each IR sensor
   int leftIR;
   int rightIR;
-  int frontWall = 0; //threshold for if wall is detected in front of the robot
-  int leftWall = 0; //target distance for wall to left
-  int rightWall = 0; //target distance if wall to right
-  double kp = 0;
+  int frontWall = 630; //threshold for if wall is detected in front of the robot
+  int leftWall = 345; //target distance for wall to left
+  int rightWall = 345; //target distance if wall to right
+  double kp = 0.1;
   double errorValue = 0;
   int motorSpeed = 50;
   double left; //amount to adjust each motor speed
@@ -31,20 +31,20 @@ init(0);
       rightIR = read_analog(2);
       printf("Right: %d\n", rightIR);
 	  
-	  if(frontIR < frontWall){ //if a wall is detected in front of the robot
+	  if(frontIR > frontWall){ //if a wall is detected in front of the robot
 	    printf("wall in front of robot detected \n");
 		if(rightIR > rightWall){ //turn right if there is no wall to the right
 			printf("no wall to the right of robot \n");
-			set_motor(1, -1*motorSpeed);
+			set_motor(1, 0.3*motorSpeed); //tune 0.3 for arc of maze
 			set_motor(2, motorSpeed);
 		}if(leftIR > leftWall){ //turn left if there is no wall to the left
 			printf("no wall to the left of robot \n");
 			set_motor(1, motorSpeed);
-			set_motor(2, -1*motorSpeed);
+			set_motor(2, 0.3*motorSpeed);
 		}
 	  }else{ //if there is no wall in front of the robot
-		errorValue = (leftIR - leftWall)+(rightWall - rightIR); //generate negative error for too far left, positive for too far right
-	  
+		errorValue = (leftWall - leftIR)+(rightIR - rightWall); //generate negative error for too far left, positive for too far right
+	  								//whether this translates to correct motor movements is yet to be seen
 		right = motorSpeed - (errorValue * kp); //find motor speeds
 		left = motorSpeed + (errorValue * kp);
 	  
