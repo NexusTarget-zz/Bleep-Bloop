@@ -24,13 +24,13 @@ init(0);
 	bool intersection2 = false;
 
         while(true){
-        	frontIR = read_analog(0); //reads IR sensors and prints to the console
+        	frontIR = read_analog(0); //Reads Front IR Sensor and prints to the console
                 printf("Front: %d", frontIR);
 
-                leftIR = read_analog(1);
+                leftIR = read_analog(1); // Reads Left IR Sensor and prints to console
                 printf(" Left: %d", leftIR);
 
-                rightIR = read_analog(2);
+                rightIR = read_analog(2);// Reads Right IR Sensor and prints to console
                 printf(" Right: %d\n", rightIR);
 
                 if(frontIR > frontWall){ //if a wall is detected in front of the robot
@@ -76,10 +76,10 @@ init(0);
                 	
                 errorValue = (leftWall - leftIR)+(rightIR - rightWall); //generate negative error for to$
                                                                         //whether this translates to cor$
-                right = motorSpeed - (errorValue * kp); //find motor speeds
-                left = motorSpeed + (errorValue * kp);
-		set_motor(1, left); //set motor speeds
-                set_motor(2, right);
+                right = motorSpeed - (errorValue * kp); //Calculates Right Motor Speed
+                left = motorSpeed + (errorValue * kp); // Calculates Left Motor Speed
+		set_motor(1, left); //Sets Left Motor Speed
+                set_motor(2, right); // Sets Right Motor Speed
           }
     }
 
