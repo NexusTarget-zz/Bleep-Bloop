@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include <time.h>
 
 extern "C" int init(int d_lev);
@@ -35,12 +36,12 @@ init(0);
 	    printf("wall in front of robot detected \n");
 		if(rightIR > rightWall){ //turn right if there is no wall to the right
 			printf("no wall to the right of robot \n");
-			set_motor(1, 0.3*motorSpeed); //tune 0.3 for arc of maze
+			set_motor(1, 0.43*motorSpeed); //tune 0.43 - got it from calculations, probably won't work irl
 			set_motor(2, motorSpeed);
 		}if(leftIR > leftWall){ //turn left if there is no wall to the left
 			printf("no wall to the left of robot \n");
 			set_motor(1, motorSpeed);
-			set_motor(2, 0.3*motorSpeed);
+			set_motor(2, 0.43*motorSpeed);
 		}
 	  }else{ //if there is no wall in front of the robot
 		errorValue = (leftWall - leftIR)+(rightIR - rightWall); //generate negative error for too far left, positive for too far right
