@@ -44,8 +44,8 @@ int main ()
 	}
 	
 //START OF NETWORK CODE
-/*	init(0);
-	connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
+	init(0);
+/*	connect_to_server("130.195.6.196", 1024); //connects to server with the ip address 130.195.6.196 on port 1024
 	send_to_server("Please"); //sends please to the connected server
 	receive_from_server(message); //receives message from the connected server
 	char* response = message;
