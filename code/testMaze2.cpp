@@ -37,26 +37,10 @@ init(0);
                         printf("wall in front of robot detected \n");
                         if((rightIR < rightWall) && (leftIR < leftWall)){ //turn right if there is no wall
                                 printf("no wall left or right \n");
-                                //intersection = true;
                 	        set_motor(1, -20); //tune 0.43 - got it from calc$
                                 set_motor(2, 50);
                                 Sleep(1,0);
-                                
-        /*      }else if((rightIR < rightWall) && (leftIR > leftWall){
-                        printf("no wall to right \n");
-                        set_motor(1, -1 * motorSpeed);
-                        set_motor(2, motorSpeed);*/
                 }
-
-                //else if(leftIR > leftWall){ //turn left if there is no wall to the left
-                 //     printf("no wall to the left of robot \n");
-                 //     set_motor(1, motorSpeed);
-                 //     set_motor(2, 0.30 * motorSpeed);
-                //}else if(rightIR > rightWall){
-                 //     printf("no wall right of robot \n");
-                 //     set_motor(1, 0.30 * motorSpeed);
-                 //     set_motor(2, motorSpeed);
-                //}
           }else{ //if there is no wall in front of the robot
                 if(intersection){
                 	printf("intersection 1 started \n");
@@ -89,8 +73,3 @@ init(0);
     }
 
 }
-
-
-
-
-
