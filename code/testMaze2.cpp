@@ -59,8 +59,8 @@ init(0);
           }else{ //if there is no wall in front of the robot
                 if(intersection){
                 	printf("intersection 1 started \n");
-                	set_motor(1, 0.3* motorSpeed);
-                        set_motor(2, motorSpeed);
+                	set_motor(1, motorSpeed);
+                        set_motor(2, 0.3*motorSpeed);
                         if(rightIR > rightWall){
                         	intersection2 = true;
                         	intersection = false;
@@ -69,8 +69,8 @@ init(0);
                 }
                 if(intersection2){
                 	printf("intersection 2 started \n");
-                	set_motor(1, 0.3* motorSpeed);
-                        set_motor(2, motorSpeed);
+                	set_motor(1, motorSpeed);
+                        set_motor(2, 0.3*motorSpeed);
                         if(leftIR > leftWall){
                         	intersection2 = false;
                         	printf("intersection 2 ended \n");
