@@ -167,7 +167,7 @@ int main ()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 250000);
+				Sleep(0, 100000);
 				while(!centered)
 				{
 					int tLine[32];
@@ -177,8 +177,8 @@ int main ()
 						tLine[i] = get_pixel(i*10,120,3);
 					}
 			
-					set_motor(1, motorSpeed);
-					set_motor(2, -1*motorSpeed);
+					set_motor(1, 0.*motorSpeed);
+					set_motor(2, -0.5*motorSpeed);
 					if(tLine[16]>pixelThresh)
 					{
 						centered = true;
@@ -190,7 +190,7 @@ int main ()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 250000);
+				Sleep(0, 120000);
 				while(!centered)
 				{
 					
@@ -200,8 +200,8 @@ int main ()
 					{
 						tLine[i] = get_pixel(i*10,120,3);
 					}
-					set_motor(1, motorSpeed);
-					set_motor(2, -1*motorSpeed);
+					set_motor(1, 0.5*motorSpeed);
+					set_motor(2, -0.5*motorSpeed);
 					if(tLine[16]>pixelThresh)
 					{
 						centered = true;
@@ -213,7 +213,7 @@ int main ()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 250000);
+				Sleep(0, 120000);
 				while(!centered)
 				{
 					int tLine[32];
@@ -222,8 +222,8 @@ int main ()
 					{
 						tLine[i] = get_pixel(i*10,120,3);
 					}
-					set_motor(1, -1*motorSpeed);
-					set_motor(2, motorSpeed);
+					set_motor(1, -0.5*motorSpeed);
+					set_motor(2, 0.5*motorSpeed);
 					if(tLine[16]>pixelThresh)
 					{
 						centered = true;
@@ -236,13 +236,13 @@ int main ()
 		{
 			if(prevErrorValue >= 0)
 			{
-				set_motor(1, -1*motorSpeed);
+				set_motor(1, -0.5*motorSpeed);
 				set_motor(2, motorSpeed);
 			}
 			else if(prevErrorValue < 0)
 			{
 				set_motor(1, motorSpeed);
-				set_motor(2, -1*motorSpeed);
+				set_motor(2, -0.5*motorSpeed);
 			}
 		}
 		else
