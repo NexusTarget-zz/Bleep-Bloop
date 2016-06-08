@@ -27,7 +27,7 @@ int main ()
 	int left; 
 	int right;
 	int motorSpeed = 100;
-	double kp = 3; //P value in PD controller
+	double kp = 6; //P value in PD controller
 	double kd = 0.0000; //D value in PD controller
 	double ki = 0;
 	double pixelCount;
@@ -70,7 +70,7 @@ int main ()
 	  		int rightWall = 345; //target distance if wall to right
 		  	double kp = 0.2;
 	 		double errorValue = 0;
-			int motorSpeed = 100;
+			int motorSpeed = 50;
 			double left; //amount to adjust each motor speed
 			double right;
 
@@ -167,7 +167,7 @@ int main ()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 100000);
+				Sleep(0, 100000); //previously 250000 
 				while(!centered)
 				{
 					int tLine[32];
@@ -177,7 +177,7 @@ int main ()
 						tLine[i] = get_pixel(i*10,120,3);
 					}
 			
-					set_motor(1, 0.*motorSpeed);
+					set_motor(1, 0.5*motorSpeed);
 					set_motor(2, -0.5*motorSpeed);
 					if(tLine[16]>pixelThresh)
 					{
@@ -190,7 +190,7 @@ int main ()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 120000);
+				Sleep(0, 100000);
 				while(!centered)
 				{
 					
@@ -213,7 +213,7 @@ int main ()
 			{
 				set_motor(1, motorSpeed);
 				set_motor(2, motorSpeed);
-				Sleep(0, 120000);
+				Sleep(0, 100000);
 				while(!centered)
 				{
 					int tLine[32];
