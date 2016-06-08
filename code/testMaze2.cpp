@@ -38,8 +38,8 @@ init(0);
                         if((rightIR < rightWall) && (leftIR < leftWall)){ //turn right if there is no wall
                                 printf("no wall left or right \n");
                                 //intersection = true;
-                	        set_motor(1, (-0.3 * motorSpeed)); //tune 0.43 - got it from calc$
-                                set_motor(2, motorSpeed);
+                	        set_motor(1, -20); //tune 0.43 - got it from calc$
+                                set_motor(2, 50);
                                 Sleep(1,0);
                                 
         /*      }else if((rightIR < rightWall) && (leftIR > leftWall){
