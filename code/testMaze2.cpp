@@ -12,10 +12,10 @@ init(0);
 	int frontIR; //current reading for each IR sensor
 	int leftIR;
   	int rightIR;
-  	int frontWall = 550; //threshold for if wall is detected in front of the robot
+  	int frontWall = 560; //threshold for if wall is detected in front of the robot
   	int leftWall = 345; //target distance for wall to left
   	int rightWall = 345; //target distance if wall to right
-  	double kp = 0.1;
+  	double kp = 0.2;
  	double errorValue = 0;
 	int motorSpeed = 50;
 	double left; //amount to adjust each motor speed
