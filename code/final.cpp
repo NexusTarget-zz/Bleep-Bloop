@@ -189,7 +189,7 @@ int main ()
 			else if(errorValue < 0) //if line not found or left 90deg corner/T junction detected turn left
 			{
 				set_motor(1, 0.5*motorSpeed);
-				set_motor(2, 0.5*motorSpeed);
+				set_motor(2, -0.5*motorSpeed);
 				Sleep(0, 250000);
 				while(!centered)
 				{
@@ -236,13 +236,13 @@ int main ()
 		{
 			if(prevErrorValue >= 0)
 			{
-				set_motor(1, 0.5*motorSpeed);
+				set_motor(1, 0.1*motorSpeed);
 				set_motor(2, motorSpeed);
 			}
 			else if(prevErrorValue < 0)
 			{
 				set_motor(1, motorSpeed);
-				set_motor(2, 0.5*motorSpeed);
+				set_motor(2, 0.1*motorSpeed);
 			}
 		}
 		else
