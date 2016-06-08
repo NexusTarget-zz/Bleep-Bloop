@@ -26,7 +26,7 @@ int main ()
 	float errorTot = 0;
 	int left; 
 	int right;
-	int motorSpeed = 50;
+	int motorSpeed = 100;
 	double kp = 3; //P value in PD controller
 	double kd = 0.0000; //D value in PD controller
 	double ki = 0;
@@ -70,7 +70,7 @@ int main ()
 	  		int rightWall = 345; //target distance if wall to right
 		  	double kp = 0.2;
 	 		double errorValue = 0;
-			int motorSpeed = 50;
+			int motorSpeed = 100;
 			double left; //amount to adjust each motor speed
 			double right;
 
